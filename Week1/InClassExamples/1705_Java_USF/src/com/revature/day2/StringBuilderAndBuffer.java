@@ -8,13 +8,24 @@ public class StringBuilderAndBuffer {
 		String s2 = "dogs";
 		String s3 = new String("dogs");
 		
-		
+		System.out.println(System.identityHashCode(s1));
+		System.out.println(System.identityHashCode(s2));
+		System.out.println(System.identityHashCode(s3));
+		/*
+		 * You are NOT gauranteed a unique hashcode for different places in memory.
+		 * Two objects in two different locations can risk having the same hashcode.
+		 * Chances of that happening are round the same as winning a lottery.
+		 */
 		
 		System.out.println("s1 == s2: " + (s1 == s2));			//T
 		System.out.println("s1 == s3: " + (s1 == s3));			//F
 		System.out.println("s1.equals(s2): " + s1.equals(s2));	//T
 		System.out.println("s1.equals(s3): " + s1.equals(s3));	//T
 		
+		
+		
+		
+/*		
 		System.out.println(s3.substring(1,2)); //START with left index, end BEFORE 2nd index
 		System.out.println(s3);
 		
@@ -30,13 +41,13 @@ public class StringBuilderAndBuffer {
 
 		long curtime;
 		
-		/*
+		
 		curtime = System.currentTimeMillis();
 		for(int i = 0; i < size; i++){
 			str = str + "a";
 		}
 		System.out.println("String: " + (System.currentTimeMillis() - curtime));
-		*/
+		
 		curtime = System.currentTimeMillis();
 		for(int i = 0; i < size; i++){
 			sbui.append("a");
@@ -51,15 +62,15 @@ public class StringBuilderAndBuffer {
 		
 		
 		
-		/*
+		
 		System.out.println("======Fun With Strings=======");
 		System.out.println(1 + 2 + 3);
 		System.out.println("1" + "2" + "3");
 		System.out.println(1 + 2 + 3 + "s");
 		System.out.println('c' + 1 + 2 + "s" + (3 + 4));
 		System.out.println("s" + s2 + 2 + 3);
-		*/
 		
+		*/
 	}
 
 }
