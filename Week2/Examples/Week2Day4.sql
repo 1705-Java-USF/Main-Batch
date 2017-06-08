@@ -60,3 +60,115 @@ insert into flash_cards (FC_QUESTION, FC_ANSWER)
 VALUES('Another question?', 'Yeah I guess...');
 
 select * from flash_cards;
+
+--Stored procedure
+/*
+  A named transaction that can be invoked when called.
+  
+  CREATE [OR REPLACE] Proc_name
+  IS
+      This section is where you can DECLARE variables
+  BEGIN
+      This section is what you can write the execution
+  EXCEPTION
+      This is where you can write the exception handler
+  END;
+  
+  invoke your procedures via:
+  BEGIN
+    proc_name();
+  END;
+  
+  OR
+  
+  call proc_name();
+*/
+CREATE OR REPLACE PROCEDURE hello_world_procedure
+IS
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Hello world!');
+END;
+
+/*
+  To view the sql developer console navigate to:
+  View>dbms output> click the '+' symbol and add the database whose console you want to view
+*/
+BEGIN
+  hello_world_procedure();
+END;
+/*
+  Procedures can allow us to define executions that can change the data
+  of a table. Most actions can be taken against a table using these procedures.
+*/
+
+/*
+  Things of note:
+    With parameters, you have the following:
+    IN parameters, which store whatever is passed as input during the procedure call.
+    OUT parameters, which serve to only hold the result of execution in a procedure.
+    IN OUT parameters, can serve both purposes.
+    Parameter syntax is as follows: paramname IN/OUT/IN OUT datatype
+*/
+CREATE OR REPLACE PROCEDURE insert_fc_procedure(some_q IN VARCHAR2, some_a IN flash_cards.fc_answer%TYPE)
+IS
+BEGIN
+  INSERT INTO flash_cards(fc_question, fc_answer) VALUES(some_q, some_a);
+  commit;
+END;
+
+BEGIN
+  insert_fc_procedure('Question from a procedure?','You betcha!');
+END;
+
+select * from flash_cards;
+
+CREATE OR REPLACE PROCEDURE get_answer_procedure(some_q IN VARCHAR2, some_a OUT VARCHAR2)
+IS
+BEGIN
+  select fc_answer into some_a from flash_cards where fc_question = some_q;
+END;
+
+--Things to note: Use DECLARE to set up a block where variables can be declared then
+--used within the BEGIN block.
+DECLARE
+  inputs varchar2(4000);
+  
+  answer varchar2(4000);
+BEGIN
+  inputs := 'question';
+  get_answer_procedure('Are we human?', answer);
+  DBMS_OUTPUT.PUT_LINE('Answer is: ' || answer);
+END;
+
+/*
+  CURSORS!
+  -A cursor is essentially like a pointer to a table or view.
+  -We can use them to iterate through entire queries from the database.
+  -When we want to pass entire tables or queries, we need to use cursors.
+  
+  NOTE: PL/SQL offers a CURSOR and a SYS_REFCURSOR
+  The SYS_REFCURSOR is a stronger cursor (therefore more costly) that is allowed
+  to be passed outside the scope of a procedure. A normal CURSOR must be created
+  and die within the scope of the procedure it is created in.
+*/
+CREATE OR REPLACE PROCEDURE get_all_fc_procedure(cursorParam OUT SYS_REFCURSOR)
+IS
+BEGIN
+  open cursorParam FOR
+  select * from flash_cards;
+END;
+
+DECLARE
+  fc_cursor SYS_REFCURSOR;
+  someId flash_cards.fc_id%type;
+  someQuestion flash_cards.fc_question%type;
+  someAnswer flash_cards.fc_answer%type;
+BEGIN
+  GET_ALL_FC_PROCEDURE(fc_cursor);
+  
+  LOOP
+    FETCH fc_cursor INTO someId, someQuestion, someAnswer;
+    EXIT WHEN fc_cursor%NOTFOUND; --%NOTFOUND does not exist until there is no records to be fetched.
+    DBMS_OUTPUT.PUT_LINE(someId || ' ' || someQuestion || ' ' || someAnswer);
+  END LOOP;
+END;
