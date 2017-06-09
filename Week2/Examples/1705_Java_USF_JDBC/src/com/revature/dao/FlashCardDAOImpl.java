@@ -2,7 +2,10 @@ package com.revature.dao;
 
 import static com.revature.util.CloseStreams.close;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
@@ -47,8 +50,34 @@ public class FlashCardDAOImpl implements FlashCardDAO{
 
 	@Override
 	public FlashCard selectFlashCardById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		FlashCard fc = null;
+
+		try(Connection conn = ConnectionUtil.getConnection();){
+			
+			String sql = "SELECT * FROM flash_cards WHERE fc_id = ?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			
+			fc = new FlashCard();
+			
+			
+			while(rs.next()){
+				fc.setId(rs.getInt(1));
+				fc.setQuestion(rs.getString("fc_question"));
+				fc.setAnswer(rs.getString(3));
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			close(ps);
+			close(rs);
+		}
+		return fc;
 	}
 
 	@Override
@@ -61,6 +90,30 @@ public class FlashCardDAOImpl implements FlashCardDAO{
 	public void deleteFlashCardById(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void createFlashCardSP(FlashCard fc){
+		CallableStatement cs = null;
+		
+		try(Connection conn = ConnectionUtil.getConnection();){
+			
+			String a = fc.getAnswer();
+			String q = fc.getQuestion();
+			
+			String sql = "{call insert_fc_procedure(?,?)}";
+			cs = conn.prepareCall(sql);
+			cs.setString(1, q);
+			cs.setString(2, a);
+			cs.executeQuery();
+			System.out.println("Successful Procedure Call");
+			
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			close(cs);
+		}		
 	}
 
 }
