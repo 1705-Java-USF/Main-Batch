@@ -172,3 +172,113 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(someId || ' ' || someQuestion || ' ' || someAnswer);
   END LOOP;
 END;
+
+/*
+  FUNCTIONS!
+  -a function differs from a stored procedure in the following ways.
+  A stored procedure does not have to return anything.
+  A stored procedure can have as many IN/OUT parameters as it wants.
+  A stored procedure can alter the database such as insert, delete, etc.
+  A stored procedure can NOT be called mid query.
+  
+  A function MUST return ONE thing
+  A function CAN use OUT parameters, though it is recommended not to do so.
+  A function can NOT perform database operations.
+  A function CAN be called mid query.
+*/
+
+
+CREATE OR REPLACE FUNCTION get_max_id
+RETURN NUMBER
+IS
+  max_id NUMBER;
+BEGIN
+  SELECT max(fc_ID) into max_id from flash_cards;
+  RETURN max_id;
+END;
+
+DECLARE
+  maxid number;
+BEGIN
+  maxid := get_max_id();
+  DBMS_OUTPUT.PUT_LINE('Max id is: ' || maxid);
+END;
+
+
+DECLARE
+
+  firstNum number;
+  secondNum number;
+  maxNum number;
+  
+  FUNCTION findMAX(x IN NUMBER, y IN NUMBER)
+  RETURN NUMBER
+  IS
+    z NUMBER;
+  BEGIN
+  
+    IF x > y THEN
+      z := x;
+    ELSE
+      z := y;
+    END IF;
+    
+    RETURN Z;
+  END;
+  
+BEGIN
+  firstNum := 25;
+  secondNum := 42;
+  maxNum := findMax(firstNum, secondNum);
+  
+  DBMS_OUTPUT.PUT_LINE(maxNUM);
+END;
+
+--EXCEPTION HANDLING EXAMPLE
+CREATE OR REPLACE PROCEDURE exception_example
+IS
+  CURSOR badCurse IS 
+    select * from flash_cards;
+  fid flash_cards.fc_id%TYPE;
+  fquestion flash_cards.fc_question%TYPE;
+  fanswer flash_cards.fc_answer%TYPE;
+BEGIN
+  --OPEN badCurse;
+  LOOP
+    FETCH badCurse into fid, fquestion, fanswer;
+    EXIT WHEN badCurse%NOTFOUND;
+  
+  END LOOP;
+  CLOSE badCurse;
+  
+  EXCEPTION --Block triggers when an exception occurs
+    WHEN INVALID_CURSOR THEN --Checks if the exception exists, which it only will when it occurs
+        dbms_output.put_line('The cursor is bad...');
+    WHEN ZERO_DIVIDE THEN
+        dbms_output.put_line('You divided by zero!');  
+END;
+
+BEGIN
+  EXCEPTION_EXAMPLE();
+END;
+
+--VIEWS
+/*
+  We can use views to store query results from our select statements.
+  One can then perform queries on the views themselves.
+  -This aids in preventing someone from rewriting old queries
+      -Useful for queries one runs often
+  -This also provides a means of security, since when one references the view,
+    they don't know the names of the tables being accessed.
+*/
+
+delete from (select * from flash_Cards)
+where fc_id = 5;
+
+CREATE VIEW flash_card_subset
+AS
+select fc_question, fc_answer from flash_cards
+where fc_id between 2 and 4;
+
+select * from flash_card_subset
+where fc_question like '%human%';
