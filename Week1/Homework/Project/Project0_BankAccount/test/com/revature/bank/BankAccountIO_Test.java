@@ -1,6 +1,7 @@
 package com.revature.bank;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,34 +11,23 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 public class BankAccountIO_Test {
-	/* Can't find a reasonable way to test reading a file without 
-	 * 	placing the readFile (not test) method in a different class.
-	 * But even then, I can't seem to figure out why or even the 
-	 * 	proper way to do it given that (1) it has no need to return
-	 * 	anything and (2) it seems I would need to pass in some object
-	 * 	other than just the fileName so I could test it.
+	
+	// Test if the file that BankAccountIO is reading from exists in the directory.
+	@Test
+	public void doesFileExist() {
+        File file = new File("accounts.txt");
+        assertTrue(file.exists());
+	}
+	
 	@Rule
-    public TemporaryFolder folder = new TemporaryFolder();
-	
+	public TemporaryFolder folder = new TemporaryFolder();
 	
 	@Test
-	public void readFile() throws IOException {
+	public void writeFile() throws IOException {
 		File file = folder.newFile("accountsTest.txt");
-		file
+		File file2 = new File("accounts.txt");
+		BankAccountIO.writeFile(file.getAbsolutePath());
+		BankAccountIO.writeFile(file2.getAbsolutePath());
+		assertEquals(file.length(), file2.length());
 	}
-	*/
-	
-	/* Requires user input to test. Not a good test case.
-	@Test
-	public void askUserToReadOrWrite() {
-		int userReadOrWrite = BankAccountIO.askUserToReadOrWrite();
-		
-		assertEquals(0 | 1, userReadOrWrite);
-	}
-	*/
-	
-	/*
-	 * Similar to readFile(), writeFile() doesn't seem to be possible unless I can
-	 * 	pass some kind of Writer object in.
-	 */
 }

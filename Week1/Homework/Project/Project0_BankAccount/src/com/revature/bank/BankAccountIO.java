@@ -72,7 +72,7 @@ public class BankAccountIO {
 		}
 	}
 	
-	private static void writeFile(String fileName) throws IOException {
+	static void writeFile(String fileName) throws IOException {
 		BufferedWriter bw = null;
 		logger.trace("Adding 3 accounts to collection.");
 		
