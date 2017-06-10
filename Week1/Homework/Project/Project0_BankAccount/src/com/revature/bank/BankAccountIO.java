@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 
 public class BankAccountIO {
 	final static Logger logger = Logger.getRootLogger();
+	final static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException {
 		String fileName = "accounts.txt";
@@ -26,7 +27,6 @@ public class BankAccountIO {
 	}
 
 	private static int askUserToReadOrWrite() {
-		final Scanner scan = new Scanner(System.in);
 		int num;
 		logger.debug("User Input: Begin");
 		while(true) {
@@ -34,8 +34,7 @@ public class BankAccountIO {
 				System.out.print("Enter 1 or 2 for read and write file, respectively: ");
 				num = scan.nextInt();
 				if(num == 1 || num == 2) {
-					logger.debug("User Input: 1 or 2 inputted.");
-					scan.close();
+					logger.debug("User Input: " + num + " inputted.");
 					return num;										// If number is valid (i.e., 1 or 2), return.
 				}
 			} catch(InputMismatchException e) {	}					// Otherwise, ask user to enter a valid number.
@@ -74,17 +73,13 @@ public class BankAccountIO {
 	
 	static void writeFile(String fileName) throws IOException {
 		BufferedWriter bw = null;
-		logger.trace("Adding 3 accounts to collection.");
-		
-		// Add 3 accounts to collection.
 		List<BankAccount> bankAccounts = new ArrayList<>();
-		bankAccounts.add(new BankAccount(1, "John", 3000.23));
-		bankAccounts.add(new BankAccount(2, "Hunter", 248.44));
-		bankAccounts.add(new BankAccount(3, "Elmo", 1009.98));
-		logger.trace("Added 3 accounts to collection.");
-		logger.debug("Write File: Begin");
 		
-		// Write 3 accounts to file.
+		// Ask user to create accounts.
+		bankAccounts = createBankAccounts();
+		
+		// Write accounts to file.
+		logger.debug("Write File: Begin");
 		try {
 			bw = new BufferedWriter(new FileWriter(fileName));
 			for(BankAccount ba : bankAccounts) {
@@ -93,6 +88,7 @@ public class BankAccountIO {
 				bw.write(String.valueOf(ba.getBalance()) + "\n");
 			}
 			logger.debug("Write File: Success");
+			System.out.println("Accounts successfully written to file.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -100,4 +96,24 @@ public class BankAccountIO {
 				bw.close();
 		}
 	}
+	
+	private static List<BankAccount> createBankAccounts() {
+		List<BankAccount> bankAccounts = new ArrayList<>();
+		System.out.print("How many accounts do you want to enter: ");
+		int limit = scan.nextInt();
+		
+		// Ask for name and balance for each account, add to list, return to writer.
+		for(int i = 1; i <= limit; i++) {
+			scan.nextLine();			// Consume
+			System.out.print("Enter name: ");
+			String name = scan.nextLine();
+			System.out.print("Enter balance: ");
+			double balance = scan.nextDouble();
+			
+			bankAccounts.add(new BankAccount(i, name, balance));
+			logger.trace(i + " auto-assigned to new account owner " + name);
+		}
+		return bankAccounts;
+	}
+	
 }
