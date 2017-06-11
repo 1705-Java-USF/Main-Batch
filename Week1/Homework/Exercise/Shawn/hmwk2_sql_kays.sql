@@ -479,6 +479,20 @@ WHERE a.reportsto = b.reportsto
 AND a.employeeid <> b.employeeid;
 
 
+/*
+    9.0 Backup
+    I tried using RMAN to backup and restore.
+    I was able to do a "consistent backup" that backed it up to DBF files.
+    When I restored, the DB listener stopped giving me access to my databases,
+    so I had to reinstall Oracle and recreate my sandbox and chinook databases.
+    That was a trip and a half to go through, so backing up to a .bak file
+    instead eludes me.
+    
+    Google also says that SQL Server can create .bak files, but Oracle I can't 
+    find such a feature.
+    
+    I also did Tools > Database Export but that exports as a .sql file.
+*/
 
 
 
