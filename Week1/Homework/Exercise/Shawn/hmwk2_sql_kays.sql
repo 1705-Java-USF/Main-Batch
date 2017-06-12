@@ -185,7 +185,6 @@ BEGIN
 END;
 
 
-
 /*
     3.4 User Defined Table Valued Functions
     Create a function that returns all employees who are born after 1968.
@@ -216,7 +215,6 @@ BEGIN
 END;
 
 SELECT * FROM TABLE(get_employees_after_1968);
-
 
 
 
@@ -257,49 +255,36 @@ END;
     Create a stored procedure that returns the managers of an employee.
 */
 
-CREATE OR REPLACE PROCEDURE update_employee_info_proc(id IN employee.employeeid%TYPE)
+CREATE OR REPLACE PROCEDURE update_employee_info_proc(id IN employee.employeeid%TYPE, lname IN employee.lastname%TYPE, city_in IN employee.city%TYPE)
 IS
 BEGIN
     UPDATE employee SET 
-        lastname = 'Jorge',
-        firstname = 'York',
-        title = 'IT Staff',
-        ReportsTo = 6,
-        birthdate = TO_DATE('18-APR-78'),
-        hiredate = TO_DATE('23-JAN-05'),
-        address = '1189 Apple Cross East',
-        city = 'Yethia',
-        state = 'MS',
-        country = 'U.S.',
-        postalcode = '38923',
-        phone = '+1 (567) 784-9874',
-        fax = '+1 (768) 231-4978',
-        email = 'itsalotoftofu@chinookcorp.com'
+        lastname = lname,
+        city = city_in
     WHERE employeeid = id;
     COMMIT;
 END;
 
 BEGIN
-    update_employee_info_proc(2);
+    update_employee_info_proc(2, 'Hack', 'Ken');
 END;
 
 
 
-CREATE OR REPLACE PROCEDURE get_manager_of_emp_proc(id IN employee.employeeid%TYPE, report OUT employee.reportsto%TYPE)
+CREATE OR REPLACE PROCEDURE get_manager_of_emp_proc(id IN employee.employeeid%TYPE)
 IS
-BEGIN
-    SELECT reportsto INTO report FROM employee WHERE employeeid = id;
-END;
-
-DECLARE
-    report employee.reportsto%TYPE;
+    managerid employee.reportsto%TYPE;
     manager_first_name employee.firstname%TYPE;
     manager_last_name employee.lastname%TYPE;
     manager_title employee.title%TYPE;
 BEGIN
-    get_manager_of_emp_proc(7, report);
-    SELECT firstname, lastname, title INTO manager_first_name, manager_last_name, manager_title FROM employee WHERE employeeid = report;
+    SELECT reportsto INTO managerid FROM employee WHERE employeeid = id;
+    SELECT firstname, lastname, title INTO manager_first_name, manager_last_name, manager_title FROM employee WHERE employeeid = managerid;
     DBMS_OUTPUT.PUT_LINE('Your manager is the ' || manager_title || ' ' || manager_first_name || ' ' || manager_last_name);
+END;
+
+BEGIN
+    get_manager_of_emp_proc(7);
 END;
 
 
