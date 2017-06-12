@@ -1,4 +1,4 @@
--- 2.1 SELECT
+﻿-- 2.1 SELECT
 -- Task – Select all records from the Employee table
 SELECT * FROM EMPLOYEE;
 -- Task – Select all records from the Employee table where last name is King
@@ -131,20 +131,14 @@ CREATE OR REPLACE TYPE new_table AS OBJECT (
     birth DATE
 );
 CREATE OR REPLACE TYPE t_nested_table AS TABLE OF new_table;
-CREATE OR REPLACE FUNCTION return_table
-RETURN t_nested_table AS v_ret t_nested_table;
-BEGIN
-  v_ret  := t_nested_table();
-  RETURN v_ret;
-END;
 CREATE OR REPLACE FUNCTION get_employees
-RETURN t_nested_table AS v_ret t_nested_table;
+RETURN t_nested_table AS new_table t_nested_table;
 BEGIN
   SELECT CAST( MULTISET(
     SELECT FIRSTNAME, LASTNAME, BIRTHDATE FROM EMPLOYEE
     WHERE BIRTHDATE > TO_DATE('31-DEC-68')) AS t_nested_table)
-    INTO v_ret FROM dual;
-  RETURN v_ret;
+    INTO new_table FROM dual;
+  RETURN new_table;
 END;
 SELECT * FROM table(get_employees);
 -- 4.1 Basic Stored Procedure
