@@ -11,5 +11,6 @@ public interface FlashCardDAO {
 	public List<FlashCard> selectFlashCards();
 	public void deleteFlashCardById(int id);
 	
+	public void createFlashCardSP(FlashCard fc);
 	
 }
