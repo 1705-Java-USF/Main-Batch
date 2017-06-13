@@ -1,0 +1,7 @@
+INDEX VERSION 1.130+C:\Users\Lucas Bootcamp\iCloudDrive\Desktop\Revature\MyExamplePull\Week 2\Homework\.metadata\.plugins\org.eclipse.jdt.core
+2852909201.index
+978589843.index
+1650135229.index
+2752240171.index
+1365127667.index
+1067094681.index

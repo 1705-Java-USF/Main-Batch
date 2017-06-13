@@ -1,0 +1,67 @@
+package project0;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BankAccountIO {
+
+	static BufferedReader br;
+	static Scanner input = new Scanner(System.in);
+
+	public static void main(String[] args) throws IOException {
+
+		String FilePath = "src/Data.txt";
+
+		writeFile(FilePath);
+		readFile(FilePath);
+
+	}
+
+	static void writeFile(String FIlePath) {
+
+		ArrayList bankAccount = new ArrayList();
+		AccountInfo account = new AccountInfo();
+
+		for (int i = 0; i < 3; i++) {
+
+			System.out.print("Please input account number >> ");
+			account.setBankAccountNumber(input.nextInt());
+
+			System.out.print("\nPlease input your name >> ");
+			account.setCustomerName((input.nextLine()));
+//
+//			System.out.print("\nPlease input your balance >> ");
+//			account.setBalance((input.nextDouble()));
+//			
+//			bankAccount.add((i + 1) + ":" + account.getBankAccountNumber() + ":" + account.getCustomerName() + ":" + account.getBalance());
+		}
+		System.out.println(bankAccount);
+	}
+
+	static void readFile(String FilePath) throws IOException {
+
+		String thisLine = null;
+		String[] accountValues = null;
+
+		try {
+
+			br = new BufferedReader(new FileReader(FilePath));
+
+			while ((thisLine = br.readLine()) != null) {
+				accountValues = thisLine.split(":");
+				System.out.println(Arrays.toString(accountValues));
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				br.close();
+			}
+		}
+
+	}
+}

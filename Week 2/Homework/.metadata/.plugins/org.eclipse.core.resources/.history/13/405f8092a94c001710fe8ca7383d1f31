@@ -1,0 +1,57 @@
+package project0;
+
+import java.util.Scanner;
+
+public class AccountInfo {
+
+	Scanner input = new Scanner(System.in);
+
+	private int bankAccountNumber;
+	private String customerName;
+	private double balance;
+
+	public int getBankAccountNumber() {
+		return bankAccountNumber;
+	}
+
+	public void setBankAccountNumber(int bankAccountNumber) {
+
+		System.out.print("Please input your bank account >> ");
+
+		while (!input.hasNextInt()) {
+			System.out.print("That's not a valid account. Only enter numbers >> ");
+			input.nextInt();
+		}
+
+		bankAccountNumber = input.nextInt();
+		this.bankAccountNumber = bankAccountNumber;
+
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		
+		System.out.print("Please input your name >> ");
+
+		while (!input.hasNext()) {
+			System.out.print("That's not a valid name. Please enter characters only >> ");
+			customerName = input.next();
+		}
+
+		customerName = input.nextLine();
+		
+		this.customerName = customerName;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+}
