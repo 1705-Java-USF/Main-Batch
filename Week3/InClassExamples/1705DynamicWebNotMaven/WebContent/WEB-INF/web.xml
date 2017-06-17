@@ -29,4 +29,14 @@
     <servlet-name>GetAndPost</servlet-name>
     <url-pattern>/SomethingDifferent</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Headers</display-name>
+    <servlet-name>Headers</servlet-name>
+    <servlet-class>com.revature.servlets.Headers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Headers</servlet-name>
+    <url-pattern>/Headers</url-pattern>
+  </servlet-mapping>
 </web-app>
