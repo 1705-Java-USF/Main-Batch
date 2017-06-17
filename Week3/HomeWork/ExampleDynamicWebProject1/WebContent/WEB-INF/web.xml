@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>1705DynamicWebNotMaven</display-name>
+  <display-name>ExampleDynamicWebProject1</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,12 +9,11 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description></description>
     <display-name>HelloWorld</display-name>
     <servlet-name>HelloWorld</servlet-name>
-    <servlet-class>com.revature.servlets.HelloWorld</servlet-class>
+    <servlet-class>com.revature.HelloWorld</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HelloWorld</servlet-name>
@@ -25,10 +24,21 @@
     <description></description>
     <display-name>GetAndPost</display-name>
     <servlet-name>GetAndPost</servlet-name>
-    <servlet-class>com.revature.servlets.GetAndPost</servlet-class>
+    <servlet-class>com.revature.GetAndPost</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetAndPost</servlet-name>
     <url-pattern>/SomethingDifferent</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>Headers</display-name>
+    <servlet-name>Headers</servlet-name>
+    <servlet-class>com.revature.Headers</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Headers</servlet-name>
+    <url-pattern>/Apply</url-pattern>
   </servlet-mapping>
 </web-app>
