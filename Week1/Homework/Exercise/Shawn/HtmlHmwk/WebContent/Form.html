@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="resources/css/default.css">
+<title>Form</title>
+</head>
+
+<body class="background2">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html"> Kays' Spectacle
+					Bonanza </a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html"> Home </a></li>
+				<li><a href="AboutMe.html"> About Me </a></li>
+				<li class="active"><a href="Form.html"> Form </a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container formpage">
+		<div class="row">
+			<div class="col-md-3">
+				<h1> Sign Up</h1>
+				<form action="SignupServlet" method="post">
+					<ul style="list-style-type: none;">
+						<h3> Basic Information </h3>
+						<li>Username</li>
+						<li><input type="text" name="user" placeholder="Username" class="blackfont"></li>
+						<li>Password</li>
+						<li><input type="password" name="pass" placeholder="Password" class="blackfont"></li>
+						<li>Email</li>
+						<li><input type="email" name="email" placeholder="Email" class="blackfont"></li>
+						<li>Age</li>
+						<li><input type="number" name="age" placeholder="Age" class="blackfont"></li>
+						<hr />
+
+						<h3> Favorite Game Consoles </h3>
+						<li><input type="checkbox" name="cb_atari" value="atari"> Atari </li>
+						<li><input type="checkbox" name="cb_dreamcast" value="dreamcast"> Dreamcast </li>
+						<li><input type="checkbox" name="cb_nes" value="nes"> NES </li>
+						<li><input type="checkbox" name="cb_snes" value="snes"> SNES </li>
+						<li><input type="checkbox" name="cb_genesis" value="genesis"> Genesis </li>
+						<li><input type="checkbox" name="cb_n64" value="n64"> N64 </li>
+						<li><input type="checkbox" name="cb_gameboy" value="gameboy"> Gameboy Advance & SP </li>
+						<li><input type="checkbox" name="cb_ds" value="ds"> DS </li>
+						<li><input type="checkbox" name="cb_gamecube" value="gamecube"> GameCube </li>
+						<li><input type="checkbox" name="cb_3ds" value="3ds"> 3DS </li>
+						<li><input type="checkbox" name="cb_ps1" value="ps1"> PS1 </li>
+						<li><input type="checkbox" name="cb_ps2" value="ps2"> PS2 </li>
+						<li><input type="checkbox" name="cb_ps3" value="ps3"> PS3 </li>
+						<li><input type="checkbox" name="cb_ps4" value="ps4"> PS4 </li>
+						<li><input type="checkbox" name="cb_xbox" value="xbox"> Xbox </li>
+						<li><input type="checkbox" name="cb_xbox360" value="xbox360"> Xbox 360 </li>
+						<li><input type="checkbox" name="cb_xboxone" value="xboxone"> Xbox One </li>
+						<hr />
+
+						<h3> Favorite Spice </h3>
+						<li><input type="radio" name="r_spice" value="Chili Pepper" checked="checked"> Chili Pepper </li>
+						<li><input type="radio" name="r_spice" value="Table Salt"> Table Salt </li>
+						<li><input type="radio" name="r_spice" value="Garlic"> Garlic </li>
+						<li><input type="radio" name="r_spice" value="Black Pepper"> Black Pepper </li>
+						<li><input type="radio" name="r_spice" value="Chives"> Chives </li>
+						<li><input type="radio" name="r_spice" value="Turmeric"> Turmeric </li>
+						<li><input type="radio" name="r_spice" value="Ginger"> Ginger </li>
+					
+						<hr />
+	
+						<h3>Favorite Energy Type</h3>
+						<select name="energytype" class="blackfont">
+							<option>Select Option</option>
+							<option>Kinetic</option>
+							<option>Potential</option>
+							<option>Energy is the product of the capitalist agenda. Down with Putin!</option>
+						</select>
+						<hr />
+	
+						<input type="submit" class="btn btn-success" value="Submit"> &nbsp;
+						<input type="reset" class="btn btn-danger" value="Reset">
+					</ul>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

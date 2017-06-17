@@ -1,0 +1,33 @@
+.aboutme {
+	background-color: #564451;
+	color: white;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
+
+.homepage {
+	background-color: #808080;
+	color: white;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
+
+.formpage {
+	background-color: #aca9ad;
+	color: white;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
+
+.background {
+	background-color: #692131;
+	/* 291F29 */
+}
+
+.background2 {
+	background-color: #484848;
+}
+
+.blackfont {
+	color: #000000;
+}
