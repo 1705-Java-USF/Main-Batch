@@ -1,0 +1,30 @@
+.homepage {
+	background: url(http://cdn.wallpapersafari.com/73/71/Qe6592.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.homebody {
+	background-color: #282828;
+	color: red;
+}
+
+.design {
+	background-color: #3ae4be;
+	color: #ec006a;
+}
+
+p {
+	font-size: 150%;
+	width: 60%;
+}
+
+#txt {
+	font-size: 400%;
+	text-align: center;
+}
+
+li {
+	font-size: 135%;
+}

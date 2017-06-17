@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href = "resources/css/default.css">
+<meta charset="ISO-8859-1">
+<title>Form Practice</title>
+</head>
+<body class = "design">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">The Sirpent's Lair</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href = "aboutMe.html">About Me</a></li>
+				<li class = "active"><a href="form.html">Form Practice</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class = "container">
+		<h1>Take a prototypical annoying survey!</h1>
+		<h3></h3>
+			<!-- Type Indicates what kind of input you are seeking -->
+			<!-- Using the name attribute helps us reference via servlets. -->
+			<!-- Good practice suggests you always have some kind of identifier
+				for input fields so as to refer to them in different parts of the apps. -->
+		<form action = "GetAndPost" method = "post">
+			<ul style = "list-style-type: none;">
+				<li>Enter your email</li>
+				<li><input type = "email" name = "email" placeholder = "Email"></li>
+				<li>Enter your name</li>
+				<li><input type = "name" name = "name" placeholder = "Name"></li>
+				<li>Enter your last 4 digits of your SSN</li>
+				<li><input type = "password" name = "last4ssn" placeholder = "Ssn"></li>
+				<li>Input Age</li>
+				<li><input type = "number" name = "age" placeholder = "Age"></li>
+				
+				<hr>
+				<h3>Newsletter</h3>
+				<li><input type="checkbox" name = "cnewsletter" value = "newsletter">I want to be on the mailing list for Derek's weekly newsletter</li>
+				<hr>
+				
+				<h3>Would you Rather</h3>
+				<li><input type="radio" name = "PreferredTime" value = "No PC gaming">Never play a game on your computer ever again</li>
+				<li><input type="radio" name = "PrefferedTime" value = "No Console gaming">Never play a game on console/portable ever again</li>
+				
+				<hr>
+				<h3>Dropdown</h3>
+				<p>Choose Favorite Emoji</p>
+				<select name = "emoji" class = weblist>
+					<option>Select Option</option>
+					<option>:)</option>
+					<option>:(</option>
+					<option>:P</option>
+					<option>:3</option>
+					<option>:D</option>
+					<option>:O</option>
+					<option>>:)</option>
+					<option>:/</option>
+					<option>^^</option>
+					<option>(TT)</option>
+				</select>
+				
+				<br>
+				<input type = "reset" class = "btn btn-warning" value = "Reset">
+				<br>
+				<input type = "submit" class = "btn btn-success" value = "Submit">
+			</ul>
+		</form>
+	</div>
+	
+
+</body>
+</html>
