@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: #404040;
+}
+
+h1 {
+    color: #DDDD44;
+    text-align: center;
+}
+
+p {
+	color: #FFFF00;
+    font-family: verdana;
+    font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>My Form Page</h1>
+<form action="Week3HomeworkServlet" method="get">
+		<h3>Text Boxes</h3>
+		<ul style="list-style-type: none;">
+			<li>Name a body part!</li>
+			<li><input type="text" name="bodypart"></li>
+			<li>Now type in your bank passwords because I said so!</li>
+			<li><input type="password" name="pass"></li>
+			<li>While I'm collecting your personal info, how about your email?</li>
+			<li><input type="email" name="email" placeholder="you@example.com"></li>
+			<li>And maybe yo digits?</li>
+			<li><input type="number" name="age"></li>
+		</ul>
+		<br>
+		<p>Coke? Pepsi?</p>
+		<ul>
+			<li><input type="checkbox" name="cbcoke" value="coke">Coke</li>
+			<li><input type="checkbox" name="cbpepsi" value="pepsi">Pepsi</li>
+			<li><input type="checkbox" name="cbneither" value="neither">I hate both of them!</li>
+		</ul>
+		<br>
+		<p>Favorite time of day?</p>
+		<ul>
+			<li><input type="radio" name="Time" value="Morning" checked="checked">MORNING</li>
+			<li><input type="radio" name="Time" value="Afternoon">AFTERNOON</li>
+			<li><input type="radio" name="Time" value="Night">NIGHT</li>
+		</ul>
+		<p>Favorite color?</p>
+		<hr>
+			<select name="color">
+				<option value="Brown">Brown</option>
+				<option value="Red">Red</option>
+				<option value="Orange">Orange</option>
+				<option value="Bobbert">Bobbert</option>
+				<option value="Green">Green</option>
+				<option value="Blue">Blue</option>
+				<option value="Purble">Purple</option>
+				<option value="White">White</option>
+				<option value="Blapck">Black</option>
+				<option value="British Gray">Grey</option>
+				<option value="Gray">Gray</option>
+			</select>
+			<br>
+			<input type="reset" value="Reset the fields. Reset all the fields.">
+			<br>
+			<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
