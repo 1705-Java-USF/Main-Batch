@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Form</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="Resources/CSS/default.css">
+
+<link rel = "stylesheet" type = "text/css" href = "css/styles.css">
+
+</head>
+<body class = "container-fluid">
+
+<img src = "img/header.jpg" width = "100%">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">ValFirpo</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="form.html">Form</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutme.html">About Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class = "row">
+	<div class = "col-md-4">
+	<!-- text/password/checkbox/radio/dropdown -->
+	<h1 class = "gotchar">GoT Character Creator</h1>
+	<form action = "MyServlet" method = "post" class = "myform">
+        <ul style="list-style-type: none;">
+        <br>
+   
+        <p>Name:</p>
+        	<li><input type = "text" name = "Character" placeholder = "Character Name"></li>
+        <br>
+        
+        <p>Password:</p>
+        	<li><input type = "password" name = "Password" placeholder = "password"></li>
+        <br>
+        
+        <p>House:</p>
+        	<li><input type = "checkbox" name = "House1" value = "Stark">Stark</li>
+        	<li><input type = "checkbox" name = "House2" value = "Targaryen">Targaryen</li>
+        	<li><input type = "checkbox" name = "House3" value = "Lannister">Lannister</li>
+        	<li><input type = "checkbox" name = "House4" value = "Baratheon">Baratheon</li>
+        <br>
+        
+        <p>Gender:</p>
+        	<li><input type = "radio" name = "Gender" value = "male" checked = "checked"> Male</li>
+        	<li><input type = "radio" name = "Gender" value = "female"> Female</li>
+        <br>
+        
+        <p>Title:</p>
+        	<select name = "Title">
+				<option>Lord</option>
+				<option>King/Queen</option>
+				<option>Prince/Princess</option>
+			</select>
+         <br>
+         <br>	
+            <li><input type = "submit" value ="Submit"></li>
+        </ul>
+    </form>
+    
+	</div>
+</div>
+<br>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body
+{
+	background-color: #e2e4e4;
+}
+
+h1
+{
+	font-family: 'Arial', 'sans-serif';
+	color: #6c83e8;	
+	padding: 15px;
+}
+h2
+{
+	font-family: '';
+	color: #5b70c9;	
+}
+h3
+{
+	font-family: 'Verdana', 'sans-serif';
+	color: #404f91;	
+}
+
+p
+{
+	font-family: 'Verdana', 'sans-serif';
+	color: #06070d;	
+}
+
+.border
+{
+	border: solid 1px #1c9697;
+}
+
+.about-me
+{
+	font-size: 16px;
+	text-align:justify;
+}
+
+ul
+{
+	font-family: 'Verdana', 'sans-serif';
+	list-style-position: inside;
+	/*text-align:justify;*/
+}
+
+ol
+{
+	font-family: 'Verdana', 'sans-serif';
+	list-style-position: inside;
+	/*text-align:justify;*/
+}
+
+.myform
+{
+	background-color: #ffffff;
+	border: solid 4px #111111;
+}
+
+.gotchar
+{
+	font-family: 'Georgia', 'serif';
+	color: #111111
+}
