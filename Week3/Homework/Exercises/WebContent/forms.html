@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Some Forms</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/homework.css">
+</head>
+<body class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Nathanial Fine</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li class="active"><a href="forms.html">Forms</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Post Form</h1>
+    <br>
+    <form action="RandomForm" method="post">
+        <input type="checkbox" name="Graduate">College Grad<br>
+        Gender<br>
+        <input type="radio" name="gender" value="male">Male<br>
+        <input type="radio" name="gender" value="female">Female<br>
+        <input type="radio" name="gender" value="other">Other<br>
+        Pick a thing<br>
+        <select name="thing">
+            <option value="toaster">Toaster</option>
+            <option value="guitar">Guitar</option>
+            <option value="door">Door</option>
+            <option value="fastfood">Fast Food</option>
+            <option value="airplane">Airplane</option>
+            <option value="building">Building</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    <hr>
+    <h1>Get Form</h1>
+    <br>
+    <form action="RandomForm" method="get">
+        <input type="text" name="text" placeholder="Textbox"><br>
+        <input type="password" name="pass" placeholder="Password"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

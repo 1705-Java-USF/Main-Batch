@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>My main servlet hub</title>
+<link rel="stylesheet" type="text/css" href="resources/css/default.css">
+</head>
+<body>
+    
+    <a href="htmlexample.html">HTML</a>
+    <h1>Welcome to my servlet hub</h1>
+    
+    <p>Navigate below to test out servlet examples</p>
+    
+    <hr>
+    <h2>Hello World</h2>
+    <p>Servlets are interacted with via form submissions<br>
+    Inside the form start tag, you can optionally set a method property<br>
+    But it is the action tag, that will direct us to a servlet to handle<br>
+    <strong>Note: Action should equal to the servlet url pattern, as indeicated<br>
+        in the web.xml</strong></p>
+    
+    <form action="HelloWorld">
+        <input type="submit" value="Hello!!">
+    </form>
+    
+    <hr>
+    <h2>POST and GET</h2>
+    <p>Utilize the 'method' attribute for a form to indeicate which HTTTP <br>
+    method to use.<br>
+    If no method is specified, get is used by default</p>
+    <h3>GET</h3>
+    <form action="SomethingDifferent" method="get">
+        <ul style="list-style-type: none;">
+            <li>First name</li>
+            <li><input type="text" name="first"></li>
+            <li>Last name</li>
+            <li><input type="text" name="last"></li>
+            <li><input type="submit" value="GET"></li>
+        </ul>
+    </form>
+    <h3>POST</h3>
+    <form action="SomethingDifferent" method="post">
+        <ul style="list-style-type: none;">
+            <li>First name</li>
+            <li><input type="text" name="first"></li>
+            <li>Last name</li>
+            <li><input type="text" name="last"></li>
+            <li><input type="submit" value="POST"></li>
+        </ul>
+    </form>
+    <h3>HEADER</h3>
+    <form action="Headers">
+        <ul style="list-style-type: none;">
+            <li><input type="submit" value="HEADER"></li>
+        </ul>
+    </form>
+</body>
+</html>
