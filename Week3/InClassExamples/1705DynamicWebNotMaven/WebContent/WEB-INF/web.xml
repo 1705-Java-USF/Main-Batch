@@ -9,11 +9,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>GlobalVar</param-name>
+    <param-value>Global Bobbert</param-value>
+  </context-param>
   <servlet>
-    <description></description>
-    <display-name>HelloWorld</display-name>
     <servlet-name>HelloWorld</servlet-name>
     <servlet-class>com.revature.servlets.HelloWorld</servlet-class>
+    <init-param>
+      <param-name>InitialParam</param-name>
+      <param-value>Bobbert</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>HelloWorld</servlet-name>
@@ -38,5 +45,50 @@
   <servlet-mapping>
     <servlet-name>Headers</servlet-name>
     <url-pattern>/Headers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SecondHelloWorld</display-name>
+    <servlet-name>SecondHelloWorld</servlet-name>
+    <servlet-class>com.revature.servlets.SecondHelloWorld</servlet-class>
+    <init-param>
+      <param-name>robbert</param-name>
+      <param-value>My other initial value</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SecondHelloWorld</servlet-name>
+    <url-pattern>/SecondHelloWorld</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateCookie</display-name>
+    <servlet-name>CreateCookie</servlet-name>
+    <servlet-class>com.revature.servlets.CreateCookie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCookie</servlet-name>
+    <url-pattern>/CreateCookie</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FetchCookie</display-name>
+    <servlet-name>FetchCookie</servlet-name>
+    <servlet-class>com.revature.servlets.FetchCookie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FetchCookie</servlet-name>
+    <url-pattern>/FetchCookie</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCookie</display-name>
+    <servlet-name>DeleteCookie</servlet-name>
+    <servlet-class>com.revature.servlets.DeleteCookie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCookie</servlet-name>
+    <url-pattern>/DeleteCookie</url-pattern>
   </servlet-mapping>
 </web-app>
