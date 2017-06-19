@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="css/default.css">
+
+<meta charset="ISO-8859-1">
+<title>My Main Page</title>
+</head>
+
+<audio src="https://s3-us-west-2.amazonaws.com/nickdesign/CSGO+Menu.mp3"
+	autoplay></audio>
+
+
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Week 3 HW</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="about.html">About Me</a></li>
+					<li><a href="form.html">Forms</a></li>
+					<li><a href="#">Sign In</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<h1>Attempting to link servlets and DAO :)</h1>
+				<p>Lets do it!!</p>
+
+
+				<h2>DAO testing....</h2>
+				<br>
+				<form action="HelloDAO">
+					<input type="submit" value="DAOOO!!!">
+				</form>
+
+			</div>
+			<div class="col-md-9"></div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-6">
+				<form action="CreateCookie">
+					<ul style="list-style-type: none;">
+						<li>Username</li>
+						<li><input type="text" name="username" placeholder="Username"
+							required></li>
+						<li><input type="password" name="password"
+							placeholder="Password" required></li>
+						<li><input type="submit" value="Create Cookie"></li>
+					</ul>
+				</form>
+				<form action="FetchCookie">
+					<ul style="list-style-type: none;">
+						<li><input type="submit" value="Fetch Cookies"></li>
+					</ul>
+				</form>
+				<form action="DeleteCookie">
+					<ul style="list-style-type: none;">
+						<li><input type="submit" value="Delete Cookies"></li>
+					</ul>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<h2>Sessions</h2>
+				<form action="CreateSession">
+					<ul style="list-style-type: none;">
+						<li>First Name</li>
+						<li><input type="text" name="fname" placeholder="First Name"
+							required></li>
+						<li>Last Name</li>
+						<li><input type="text" name="lname" placeholder="Last Name"
+							required></li>
+						<li><input type="submit" value="Create Session"></li>
+					</ul>
+				</form>
+
+				<form action="TrackSession">
+					<ul style="list-style-type: none;">
+						<li><input type="submit" value="Track Session"></li>
+					</ul>
+				</form>
+
+				<form action="DeleteSession">
+					<ul style="list-style-type: none;">
+						<li><input type="submit" value="Delete Session"></li>
+					</ul>
+				</form>
+
+				<h2>FILTERS</h2>
+				<form action="adminpage.html">
+					<ul style="list-style-type: none;">
+						<li>User</li>
+						<li><input type="text" name="username" placeholder="Username"
+							required></li>
+						<li>Pass</li>
+						<li><input type="password" name="password" placeholder="Password"
+							required></li>
+						<li><input type="submit" value="Access Admin"></li>
+					</ul>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

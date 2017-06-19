@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="css/default.css">
+
+<meta charset="ISO-8859-1">
+<title>About Me</title>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Week 3 HW</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="about.html">About Me</a></li>
+					<li><a href="#">Forms</a></li>
+					<li><a href="#">Sign In</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class=row>
+			<div class="col-md-3 csgobox column shadow-alt">
+				<!-- xs/sm/md/lg -->
+				<!-- Follow up with cell span (out of 12) -->
+				<div class="csgobox__header shadow">Forms</div>
+				<div class="csgobox__content">
+					<h4>Create User and Select Interests</h4>
+					<form action="HWForm" method="post">
+						<ul style="list-style-type: none;">
+							<li>Input Username</li>
+							<li><input type="text" name="user" placeholder="Username"></li>
+							<li>Input Password</li>
+							<li><input type="password" name="pass"
+								placeholder="Password"></li>
+							<li>Input Email</li>
+							<li><input type="email" name="email" placeholder="email"></li>
+							<li>Input Age</li>
+							<li><input type="number" name="age" placeholder="age"></li>
+							<li><input type="checkbox" name="cbdog" value="dog"
+								checked="checked">DOG</li>
+							<li><input type="checkbox" name="cbcat" value="cat">CAT</li>
+							<li><input type="checkbox" name="cbbobbert" value="bobbert">GOAT</li>
+							<li><input type="radio" name="PreferredTime" value="Morning"
+								checked="checked">Morning</li>
+							<li><input type="radio" name="PreferredTime"
+								value="Afternoon">Afternoon</li>
+							<li><input type="radio" name="PreferredTime" value="Night">Night</li>
+						</ul>
+
+						<p>Choose Favorite Color</p>
+						<select name="color" class=weblist>
+							<option>Select Option</option>
+							<option>Blue</option>
+							<option>Red</option>
+							<option>Green</option>
+							<option>Bobbert</option>
+						</select> <input type="submit" value="POST!!">
+					</form>
+				</div>
+			</div>
+			<div class=col-md-9></div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

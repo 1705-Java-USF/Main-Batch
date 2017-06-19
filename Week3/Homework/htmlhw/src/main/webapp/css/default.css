@@ -1,0 +1,212 @@
+body{
+  font-family: Calibri, Candara, Segoe, Geneva, Tahoma, Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: #d3e0e9;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/225473/1080%20CSGO%20menu.png');
+  background-size: cover;
+  padding-top: 70px;
+}
+
+
+/* CSGO BOX */
+
+.column { flex-direction: column }
+
+
+.shadow{
+  -webkit-box-shadow: 6px 6px 51px 2px rgba(0,0,0,0.53);
+  -moz-box-shadow: 6px 6px 51px 2px rgba(0,0,0,0.53);
+  box-shadow: 6px 6px 51px 2px rgba(0,0,0,0.53);
+}
+
+.shadow-alt{
+  -webkit-box-shadow: 0px 0px 4px 4px rgba(77,83,95,0.4);
+  -moz-box-shadow: 0px 0px 4px 4px rgba(77,83,95,0.4);
+  box-shadow: 0px 0px 4px 4px rgba(77,83,95,0.4);
+}
+
+
+.csgobox{
+  max-height: 500px;
+  max-width: 935px;
+  background-color: #303942;
+}
+
+.csgobox__header {
+  color:            #8cbade;
+  background-color: #2e3740;
+  height:           34px;
+  padding-left:     12px;
+  font-size:        21px;
+  margin-bottom:    30px;
+}
+
+.csgobox__content{
+  padding-left: 36px;
+  color: #9c9f96;
+}
+
+
+
+/* CSGO Profile Box */
+
+.container-cs
+{
+	margin: 35px auto 30px auto;
+	width: 465px;
+	box-shadow: 0 0 25px 0 rgba( 0, 0, 0, 0.5 );
+	-webkit-box-shadow: 0 0 25px 0 rgba( 0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 25px 0 rgba( 0, 0, 0, 0.5);
+	-o-box-shadow: 0 0 25px 0 rgba( 0, 0, 0, 0.5);
+}
+
+.profile-body
+{
+	height: 137px;
+	background-color: rgba( 62,69,79, 0.95 );
+	padding: 10px 0 0 30px;
+}
+
+.selected-medal
+{
+	position: absolute;
+	z-index: 1;
+	width: 64px;
+	height: 48px;
+	margin: -25px 0 0 -31px;
+}
+
+.profile-avatar
+{
+	width: 76px;
+	height: 76px;
+}
+
+.avatar-image
+{
+	position: absolute;
+	left: 0;
+	width: 76px;
+	height: 76px;
+	border-width: 3px;
+	border-style: solid;
+	border-image: linear-gradient( to top, #252525, #777777 ) 1;
+	-webkit-border-image: -webkit-linear-gradient( to top, #252525, #777777 ) 1;
+	-moz-border-image: -moz-linear-gradient( to top, #252525, #777777 ) 1;
+	-o-border-image: -o-linear-gradient( to top, #252525, #777777 ) 1;
+}
+
+.profile-name
+{
+	font-size: 20px;
+	margin-top: -2px;
+	padding-left: 11px;
+	color: #dedede;
+}
+
+.medals { margin-top: 10px; padding-left: 10px; }
+
+.medals img
+{
+	width: 48px;
+	height: 36px;
+	margin: 0 0 0 -5px;
+}
+
+.commendations
+{
+	position: absolute;
+	display: inline-block;
+	right: 5px;
+	top: 7px;
+	line-height: 25px;
+	width: auto;
+}
+
+.commendations img { width: 15px; height: 15px; }
+
+.commendations span { position: relative; top: 1px; left: 4px; color: #8a8f93; font-size: 12px; }
+
+.rank-image
+{
+	width: 50px;
+	height: 50px;
+	margin-left: -1px;
+}
+
+.current-rank
+{
+	margin: 7px 0 0 -7px;
+	color: rgba( 136, 160, 182, 0.9 );
+}
+
+.next-rank
+{
+	margin: 10px 0 0 -9px;
+	text-align: right;
+	font-size: 12px;
+	color: rgba( 136, 160, 182, 0.9 );
+}
+
+.xp-progress-bar
+{
+	background-color: rgba( 43, 47, 56, 0.95 );
+	width: 347px;
+	height: 7px;
+	margin: 4px 0 0 9px;
+}
+
+.xp-earned
+{
+	width: 69px;
+	height: 7px;
+	margin-left: -15px;
+	background: linear-gradient( to right, #5c7a96, #88a0b6 );
+}
+
+.profile-footer
+{
+	height: 70px;
+	background-color: rgba( 43, 47, 56, 0.95 );
+	box-shadow: inset 0px 11px 15px -10px #222222;
+	-webkit-box-shadow: inset 0px 11px 15px -10px #222222;
+	-moz-box-shadow: inset 0px 11px 15px -10px #222222;
+	-o-box-shadow: inset 0px 11px 15px -10px #222222;
+}
+
+.skill-group-image
+{
+	width: 95px;
+	height: 38px;
+	margin: 16px 0 0 -5px;
+}
+
+.skill-group-name
+{
+	color: rgba( 136, 160, 182, 0.9 );
+	margin-top: 25px;
+	margin-left: 27px;
+}
+
+.matches-won
+{
+	position: absolute;
+	display: inline-block;
+	right: 7px;
+	top: 23px;
+	width: auto;
+}
+
+.matches-won img { width: 18px; height: 18px; }
+
+.matches-won span { position: relative; top: 2px; left: 5px; color: #8a8f93; }
+
+.footer
+{
+	text-align: center;
+	font-size: 16px;
+	color: #15171c;
+	opacity: 0.9;
+}
+
+.footer a { color: #dedede; }
