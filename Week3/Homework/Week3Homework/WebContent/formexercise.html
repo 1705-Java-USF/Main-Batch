@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="resources/css/formexercise.css">
+	
+	<meta charset="utf-8">
+	<title>Form Exercise</title>
+</head>
+<body class="container">
+	<nav class="navbar navbar-default">
+		<ul class="nav navbar-nav">
+			<li><a href="index.html">Home Page</a></li>
+	    	<li><a href="aboutme.html">About Me</a></li>
+	    	<li class="active"><a href="formexercise.html">Form Exercise</a></li>
+		</ul>
+	</nav>
+	<div style="text-align:center;text-decoration:underline" class="PageTitle">
+		<h1>Form Exercise</h1>
+	</div>
+	<div class="Form">
+		<form action="Form" method="post">
+			<ul>
+				<p>Username: 
+				<input type="text" name="Username" placeholder="Username"></p>
+				<p>Password: 
+				<input type="password" name="Password" placeholder="Password"></p>
+			</ul>
+			<hr>
+			<h4>Subjects learned so far:</h4>
+			<ul>
+				<li><input type="checkbox" name="Subjects" value="Java" checked="checked">Java</li>
+				<li><input type="checkbox" name="Subjects" value="Sql" checked="checked">SQL</li>
+				<li><input type="checkbox" name="Subjects" value="JDBC" checked="checked">JDBC</li>
+				<li><input type="checkbox" name="Subjects" value="Servlets" checked="checked">Servlets</li>
+				<li><input type="checkbox" name="Subjects" value="HTML" checked="checked">HTML</li>
+				<li><input type="checkbox" name="Subjects" value="CSS" checked="checked">CSS</li>
+				<li><input type="checkbox" name="Subjects" value="XML" checked="checked">XML</li>
+				<li><input type="checkbox" name="Subjects" value="JSPs">JSPs</li>
+				<li><input type="checkbox" name="Subjects" value="Hibernate">Hibernate</li>
+				<li><input type="checkbox" name="Subjects" value="Jenkins">Jenkins</li>
+				<li><input type="checkbox" name="Subjects" value="Spring">Spring</li>
+				<li><input type="checkbox" name="Subjects" value="Struts">Struts</li>
+			</ul>
+			<hr>
+			<h4>Favorite subject so far:</h4>
+			<ul>
+				<li><input type="radio" name="Favorite Subject" value="Java" checked="checked">Java</li>
+				<li><input type="radio" name="Favorite Subject" value="Sql">SQL</li>
+				<li><input type="radio" name="Favorite Subject" value="JDBC">JDBC</li>
+				<li><input type="radio" name="Favorite Subject" value="Servlets">Servlets</li>
+				<li><input type="radio" name="Favorite Subject" value="HTML">HTML</li>
+				<li><input type="radio" name="Favorite Subject" value="CSS">CSS</li>
+				<li><input type="radio" name="Favorite Subject" value="XML">XML</li>
+				<li><input type="radio" name="Favorite Subject" value="JSPs">JSPs</li>
+				<li><input type="radio" name="Favorite Subject" value="Hibernate">Hibernate</li>
+				<li><input type="radio" name="Favorite Subject" value="Jenkins">Jenkins</li>
+				<li><input type="radio" name="Favorite Subject" value="Spring">Spring</li>
+				<li><input type="radio" name="Favorite Subject" value="Struts">Struts</li>
+			</ul>
+			<hr>
+			<ul>
+				<p>Satisfaction level of bootcamp so far:</p>
+				<select name="satisfactionn Level">
+					<option>Highly Satisfied</option>
+					<option>Satisfied</option>
+					<option>No Comment</option>
+					<option>Dissatisfied</option>
+					<option>Highly dissatisfied</option>
+				</select>
+			</ul>
+			<hr>
+			<input type="submit" value="  Submit  ">
+			&nbsp;&nbsp;
+			<input type="reset" value="Reset Form">
+		</form>
+	</div>
+</body>
+</html>
