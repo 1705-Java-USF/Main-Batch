@@ -20,18 +20,22 @@ public class TravelServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// display a html file with data from the form submitted
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		//out.println("<script>document.getElementById(\"TravelForm\").style.visibility = \"hidden\";</script>");
-		out.println("<h3>The following form has been submitted:</h3>");
-		Enumeration<String> headers = request.getHeaderNames();
-		out.println("<table border='1px'><tr><th>Question</th><th>Answer</th></tr>"); 
-		String header;
-		while(headers.hasMoreElements()) {
-			header = headers.nextElement();
-			out.println("<tr><td>" + header + "</td><td>" + request.getHeader(header) + "</td></tr>");
+		out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
+		out.println("<script>$(function(){$(\"#includedContent\").load(\"travel.html\"); });</script>");
+		out.println("<div id=\"includedContent\"></div>");
+		out.println("<h3 style=\"margin-left: 40px\">The following travel suggestion has been submitted:</h3>");
+		Enumeration<String> params = request.getParameterNames();
+		out.println("<table class=\"table table-condensed\" style=\"margin-left: 60px\"><thead><tr>"
+				+ "<th>Question</th><th>Answer</th></tr></thead><tbody>"); 
+		String param;
+		while(params.hasMoreElements()) {
+			param = params.nextElement();
+			out.println("<tr><td>" + param + "</td><td>" + request.getParameter(param) + "</td></tr>");
 		}
-		out.println("</table>");
+		out.println("</tbody></table>");
 	}
 
 }
