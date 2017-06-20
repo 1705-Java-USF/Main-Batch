@@ -1,0 +1,10 @@
+@CHARSET "ISO-8859-1";
+.container-fluid{
+	background-color:black;
+}
+.navbar-default a.navbar-brand{
+	color: white;
+}
+.navbar.navbar-default .navbar-nav a{
+	color: white;
+}
