@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<meta charset="ISO-8859-1">
+<title>Forms</title>
+</head>
+<body>
+
+<h1>FORMS</h1>
+			<form action="CreateForms" method="post">
+				<h3>Text Boxes</h3>
+				<!-- Type indicates what kind of input you are seeking -->
+				<!-- Using the name attribute helps us reference via servlets. -->
+				<!-- Good practice suggests you always have some kind of identifier
+					for input fields so as to refer to them in different parts of the
+					applications. -->
+				
+				<ul style="list-style-type: none;">
+					<li>Input Username</li>
+					<li><input type="text" name="user" placeholder="Username"></li>
+					<li>Input Password</li>
+					<li><input type="password" name="pass" placeholder="Password"></li>
+					<li>Input Email</li>
+					<li><input type="email" name="email" placeholder="email"></li>
+					<li>Input Age</li>
+					<li><input type="number" name="age" placeholder="age"></li>
+					
+					
+					<hr>
+					<h3>Check Boxes</h3>
+					<h2>What are your favorite ice cream flavors?</h2>
+					<li><input type="checkbox" name="cbvanilla" value="vanilla">Vanilla</li>
+					<li><input type="checkbox" name="cbchocolate" value="chocolate">Chocolate</li>
+					<li><input type="checkbox" name="cbstrawberry" value="strawberry">Strawberry</li>
+					
+					<hr>
+					<h3>Radio Button</h3>
+					<h2>If you had to pick one of the following, and all others would cease to exist,
+					which one would you pick?</h2>
+					<li><input type="radio" name="PreferredFood" value="pizza">Pizza</li>
+					<li><input type="radio" name="PreferredFood" value="tacos">Tacos</li>
+					<li><input type="radio" name="PreferredFood" value="wings">Wings</li>
+				</ul>
+				<input type="submit" value="GET">
+			</form>
+
+</body>
+</html>

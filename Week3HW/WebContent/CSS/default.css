@@ -1,0 +1,34 @@
+body {
+	background-color: #3BA2EC;
+	color: #ffffff;
+}
+
+h1 {
+	font-family: "Times New Roman", Times, serif;
+    color: red;
+    
+}
+
+h2 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color: black;
+    
+}
+
+h3 {
+	font-family: "Arial Black", Gadget, sans-serif;
+    color: green;
+    
+}
+
+h4 {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
+    color: blue;
+    
+}
+
+p {
+	font-family: "Courier New", Courier, monospace;
+    color: white;
+    
+}
