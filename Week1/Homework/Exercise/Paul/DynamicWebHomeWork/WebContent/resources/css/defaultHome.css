@@ -1,0 +1,24 @@
+body#home{
+    background-color: #CE1141;
+    text-align: center;
+    color: #fff0ea;
+    }
+body#about{
+	background-color: black;
+	text-align: center; 
+	color: white;
+	
+	
+}
+
+body#signup{
+	background-color: white;
+	color: black;
+}
+
+img {
+-ms-transform: rotate(90deg); /* IE 9 */
+-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+transform: rotate(90deg);
+}
+

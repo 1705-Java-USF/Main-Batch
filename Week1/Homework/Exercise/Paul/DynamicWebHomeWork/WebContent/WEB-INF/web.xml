@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>DynamicWebHomeWork</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>GetAndPost</display-name>
+    <servlet-name>GetAndPost</servlet-name>
+    <servlet-class>com.revature.homework3.GetAndPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAndPost</servlet-name>
+    <url-pattern>/GetAndPost</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateTable</display-name>
+    <servlet-name>CreateTable</servlet-name>
+    <servlet-class>com.revature.homework3.CreateTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateTable</servlet-name>
+    <url-pattern>/CreateTable</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrackTable</display-name>
+    <servlet-name>TrackTable</servlet-name>
+    <servlet-class>com.revature.homework3.TrackTable</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrackTable</servlet-name>
+    <url-pattern>/TrackTable</url-pattern>
+  </servlet-mapping>
+</web-app>
+</element>
