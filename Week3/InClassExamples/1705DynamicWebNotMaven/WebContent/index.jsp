@@ -34,7 +34,8 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="index.html">HOME</a></li>
-				<li><a href="index.jsp">JSP HOME</a></li>
+				<li class="active"><a href="index.jsp">JSP HOME</a></li>
+				<li><a href="indexJSTL.jsp">JSP JSTL</a></li>
 			</ul>
 			<%if(session.getAttribute("user")!=null){ %>
 			<ul class="nav navbar-nav navbar-right">

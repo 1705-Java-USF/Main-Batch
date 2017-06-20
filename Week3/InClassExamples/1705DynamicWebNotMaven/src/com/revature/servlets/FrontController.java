@@ -52,12 +52,12 @@ public class FrontController extends HttpServlet {
 			}else{
 				request.setAttribute("issue", "INVALID CRENDENTIALS!");
 			}
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("indexJSTL.jsp");
 			rd.forward(request, response);
 			break;
 		case "logout":
 			request.getSession().invalidate();
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("indexJSTL.jsp");
 			rd.forward(request, response);
 			break;
 		default:
