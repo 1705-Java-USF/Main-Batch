@@ -1,0 +1,16 @@
+.key{
+	width: 150px;
+	height: 300px;
+}
+body{
+	color: black;
+	background-color: magenta;
+}
+.aboutmepara{
+	background-color: black;
+	color: white;
+	padding: 30px;
+	margin: 10px;
+	border: 1px solid white;
+	text-indent: 30px;
+}
