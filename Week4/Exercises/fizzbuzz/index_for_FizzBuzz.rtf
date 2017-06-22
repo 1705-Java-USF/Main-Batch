@@ -1,0 +1,75 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green128\blue128;\red63\green127\blue127;\red127\green0\blue127;
+\red42\green0\blue255;\red63\green127\blue95;\red42\green0\blue225;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c50196\c50196;\csgenericrgb\c24706\c49804\c49804;\csgenericrgb\c49804\c0\c49804;
+\csgenericrgb\c16471\c0\c100000;\csgenericrgb\c24706\c49804\c37255;\csgenericrgb\c16471\c0\c88235;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs22 \cf2 <!\cf3 DOCTYPE\cf0  \cf2 html>\cf0 \
+\cf2 <\cf3 html\cf2 >\cf0 \
+\cf2 <\cf3 head\cf2 >\cf0 \
+\cf2 <\cf3 meta\cf0  \cf4 charset\cf0 =\cf5 "UTF-8"\cf2 >\cf0 \
+\cf2 <\cf3 title\cf2 >\cf0 \ul \ulc0 Javascript\ulnone , don'cha know.\cf2 </\cf3 title\cf2 >\cf0 \
+\cf2 <\cf3 script\cf0  \cf4 src\cf0 =\cf5 "resources/js/main.js"\cf2 ></\cf3 script\cf2 >\cf0 \
+\cf2 </\cf3 head\cf2 >\cf0 \
+\cf2 <\cf3 body\cf2 >\cf0 \
+	\cf2 <\cf3 h1\cf2 >\cf0 Welcome to my \ul Javascript\ulnone  Examples\cf2 </\cf3 h1\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h3\cf2 >\cf0 Hello World with script tags\cf2 </\cf3 h3\cf2 >\cf0 \
+	\cf2 <\cf3 p\cf0  \cf4 id\cf0  = \cf5 "para1"\cf2 ></\cf3 p\cf2 >\cf0 \
+	\cf2 <\cf3 script\cf2 >\cf0 \
+		\cf6 //The current page you are on is always referenced via the implicitly available\cf0 \
+		\cf6 //document object.\cf0 \
+		document.getElementById(\cf5 "para1"\cf0 ).innerHTML = \cf5 "ALTERED VIA SCRIPT TAG!!!"\cf0 ;\
+	\cf2 </\cf3 script\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h3\cf2 >\cf0 Let's alter things with external scripts\cf2 </\cf3 h3\cf2 >\cf0 \
+	\cf2 <\cf3 p\cf0  \cf4 id\cf0 =\cf5 "para2"\cf2 ></\cf3 p\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h3\cf2 >\cf0 Print to console\cf2 </\cf3 h3\cf2 >\cf0 \
+	\cf2 <\cf3 button\cf0  \cf4 onclick\cf0 =\cf5 "logit()"\cf2 >\cf0 PRINT TO CONSOLE\cf2 </\cf3 button\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h3\cf2 >\cf0 PRINT TO THE PAGE\cf2 </\cf3 h3\cf2 >\cf0 \
+	\cf2 <\cf3 p\cf0  \cf4 id\cf0  = \cf5 "para3"\cf2 ></\cf3 p\cf2 >\cf0 \
+	\cf2 <\cf3 script\cf2 >\cf0 \
+		document.write(\cf5 "<h1>Hi! I was written directly to the document, BEFORE it finished loading</h1>"\cf0 )\
+	\cf2 </\cf3 script\cf2 >\cf0 \
+	\cf2 <\cf3 h3\cf2 >\cf0 \ul \ulc0 Wrting\ulnone  to a loaded document\cf2 </\cf3 h3\cf2 >\cf0 \
+	\cf2 <\cf3 button\cf0  \cf4 onclick\cf0 =\cf5 "document.write('Woops....')"\cf2 >\cf0 WRITE\cf2 </\cf3 button\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h3\cf2 >\cf0 ALERT BOX\cf2 </\cf3 h3\cf2 >\cf0 \
+	\cf2 <\cf3 button\cf0  \cf4 onclick\cf0 =\cf5 "window.alert('I AM YOUR LIFE NOW!')"\cf2 >\cf0 ALERT\cf2 </\cf3 button\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h3\cf2 >\cf0 DYNAMIC TABLE\cf2 </\cf3 h3\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 input\cf0  \cf4 type\cf0  = \cf5 "text"\cf0  \cf4 id\cf0 = \cf5 "first"\cf0  \cf4 placeholder\cf0 =\cf5 "FIRST NAME"\cf2 >\cf0 \
+	\cf2 <\cf3 input\cf0  \cf4 type\cf0 = \cf5 "text"\cf0  \cf4 id\cf0 =\cf5 "last"\cf0  \cf4 placeholder\cf0  = \cf5 "LAST NAME"\cf2 >\cf0 \
+	\cf2 <\cf3 br\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 button\cf0  \cf4 onclick\cf0 = \cf5 "addName()"\cf0  \cf2 >\cf0 ADD\cf2 </\cf3 button\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 br\cf2 >\cf0 \
+	\cf2 <\cf3 table\cf0  \cf4 id\cf0 =\cf5 "table"\cf0  \cf4 border\cf0  = \cf5 \ul \ulc5 "2px"\cf2 \ulnone >\cf0 \
+		\cf2 <\cf3 tr\cf0  \cf4 style\cf0  = "\cf4 background-color\cf0 : \cf7 #EEEEEE\cf0 "\cf2 >\cf0 \
+		\cf2 <\cf3 th\cf2 >\cf0 FIRST NAME\cf2 </\cf3 th\cf2 ><\cf3 th\cf2 >\cf0 LAST NAME\cf2 </\cf3 th\cf2 >\cf0 \
+		\cf2 </\cf3 tr\cf2 >\cf0 \
+	\cf2 </\cf3 table\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 h1\cf0  \cf4 style\cf0 = "\cf4 color\cf0 : \cf7 red\cf0 " \cf2 >\cf0 FIZZBUZZ\cf2 </\cf3 h1\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 input\cf0  \cf4 type\cf0  = \cf5 "number"\cf0  \cf4 id\cf0  = \cf5 "Min"\cf0  \cf4 placeholder\cf0  = \cf5 "Min Number"\cf2 >\cf0 \
+	\cf2 <\cf3 input\cf0  \cf4 type\cf0  = \cf5 "number"\cf0  \cf4 id\cf0  = \cf5 "Max"\cf0  \cf4 placeholder\cf0  = \cf5 "Max Number"\cf2 >\cf0 \
+	\cf2 <\cf3 br\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 button\cf0  \cf4 onclick\cf0 = \cf5 "fizzBuzz()"\cf0  \cf2 >\cf0 FIZZBUZZ\cf2 </\cf3 button\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 p\cf0  \cf4 id\cf0 =\cf5 bigmin\cf2 ></\cf3 p\cf2 >\cf0 \
+	\
+	\cf2 <\cf3 br\cf2 >\cf0 \
+	\
+	\
+\cf2 </\cf3 body\cf2 >\cf0 \
+\cf2 </\cf3 html\cf2 >}
