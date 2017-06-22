@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src = "resources/js/fizzbuzz.js"></script>
+
+<title>Fizz Buzz</title>
+</head>
+<body class = "container-fluid">
+
+<div class = "jumbotron">
+	<div class = "well">
+		<h3>Get your Fizz Buzz on!</h3>
+	</div>
+	
+	
+	<div class = "input-group">
+		<span class = "input-group-addon"> <i class = ""></i> </span>
+		<input type = "text" id = "min"  placeholder = "Min" required>
+	</div>
+	<br>
+	<div class = "input-group">
+		<span class = "input-group-addon"> <i class = ""></i> </span>
+		<input type = "text" id = "max"  placeholder = "Max" required>
+	</div>
+	<br>
+	<div>
+		<button onclick = "fizzbuzz()">ADD</button>
+	</div>
+		
+</div>
+
+<div class = "well">
+	<p id = "result"></p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Java Script hoorray</title>
+<script src = "resources/js/main.js"></script>
+</head>
+<body>
+
+	<a href = "FizzFuzz.html">FizzFuzz</a>
+	
+	<h1>Welcome to my java escript examples</h1>
+	
+	<h3>Hello world with java</h3>
+	
+	<p id = "para1"></p>
+	
+	<script >
+		document.getElementById("para1").innerHTML = "altered via internal scrip tag";
+	</script>
+	
+	<h3>External scripts</h3>
+	<p id = "para2"></p>
+	
+	<h3>Print to console</h3>
+		<button onclick = "logit()">Print</button>
+	
+	
+	<h3>Print to page</h3>
+	
+	<script>
+		document.write("<h1>hellooooow</h1>");
+	</script>
+	
+	<h3>Writing to a loaded document</h3>
+	<button onclick = "document.write('woops')">woops</button>
+	
+	<h3>Alert</h3>
+	<button onclick = "window.alert('I own you')">alert</button>
+	
+	<h3>Sum</h3>
+	<script>
+	var x = sum(5,6);
+	document.write(x);
+	document.write("\n");
+	x = sum(5)(6);
+	document.write(x);
+	</script>
+	
+	<h3>Dynamic table</h3>
+	
+	<input type = "text" id = "first" placehoder = "firstname">
+	<input type = "text" id = "last" placehoder = "lastname">
+	<br>
+	<button onclick = "addname()">ADD</button>
+	<br>
+	<table id = "table" border = "2px">
+		<tr style = background-color: #EEEEEE>
+			<th>FIRST NAME</th> <th>LAST NAME</th>
+		</tr>
+	</table>
+	
+	
+</body>
+</html>
