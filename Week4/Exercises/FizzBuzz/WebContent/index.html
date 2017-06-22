@@ -8,8 +8,12 @@
 <body>
 <input type="number" id="min" placeholder="Mininum" />
 <input type="number" id="max" placeholder="Maximum" />
+<input type="number" id="fontSize" onchange="changeFontSize()" placeholder="Font Size pt" />
+<input type="color" id="color" onchange="changeColor()" placeholder="Color" />
 <br>
 <button onclick="printFizzBuzz()">Print FizzBuzz</button>
+<button onclick="changeFontSize()">Change Font Size</button>
+<button onclick="changeColor()" >Change Color </button>
 <br>
 <p style="font-size:72pt;" id="printFizzBuzz"></p>
 </body>

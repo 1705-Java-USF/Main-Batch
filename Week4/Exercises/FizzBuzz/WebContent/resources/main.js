@@ -5,6 +5,7 @@ function printFizzBuzz()
 {
 	var min = document.getElementById("min").value;
 	var max = document.getElementById("max").value;
+	
 	min = Number(min);
 	max = Number(max);
 	if (min > max)
@@ -32,6 +33,23 @@ function printFizzBuzz()
 		}
 		totalStr += " " + str + ",";
 	}
+	changeFontSize();
+	changeColor();
 	document.getElementById("printFizzBuzz").innerHTML = totalStr;
 	
+	
+}
+function changeFontSize()
+{
+	var font = document.getElementById("fontSize").value;
+	if(font <= 0)
+	{
+		font = 12;
+	}
+	document.getElementById("printFizzBuzz").style.fontSize = font + "pt";
+}
+function changeColor()
+{
+	var color = document.getElementById("color").value;
+	document.getElementById("printFizzBuzz").style.color = color;
 }
