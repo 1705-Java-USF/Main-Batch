@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+
+  <meta charset="ISO-8859-1">
+  <title>JavaScript</title>
+
+  <script>
+  function fizzbuzz(){
+  	var min = parseInt(document.getElementById("min").value);
+  	var max = parseInt(document.getElementById("max").value);
+
+    document.getElementById("test").innerHTML = min + " " + max + "<br>";
+    x = "";
+
+    if(!isNaN(min) && !isNaN(max)){
+      for(i = min; i < max; i++){
+        if((i % 3) == 0 && (i % 5) == 0){
+          x += i + ": FizzBuzz<br>";
+        } else if((i % 5) == 0) {
+          x += i + ": Buzz<br>";
+        } else if((i % 3) == 0) {
+          x += i + ": Fizz<br>";
+        } else {
+          x += "";
+        }
+      }
+    }
+
+    document.getElementById("para").innerHTML = x;
+    }
+  </script>
+
+</head>
+<body>
+
+  <p id="test"></p>
+
+    Enter a minimum number:
+    <input type="number" id="min"><br>
+    Enter a maximum number:
+    <input type="number" id="max"><br>
+    <button onclick="fizzbuzz()">Produce FizzBuzz between that range!!</button>
+
+  <p id="para"></p>
+
+</body>
