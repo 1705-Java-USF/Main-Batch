@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>FizzBuzz</title>
+<script src="resources/js/main.js"></script>
+</head>
+<body onkeydown ="if (event.keyCode == 13) document.getElementById('fizzbuzz_btn').click()">
+	<input type="number" id="minimum" placeholder="Minimum">
+	<input type="number" id="maximum" placeholder="Maximum">
+	<br>
+	
+	<button id="fizzbuzz_btn" onclick="fizzbuzz()" onkeypress="Enter">FizzBuzz</button>
+	<p id="numbers"></p>
+	<br>
+	
+</body>
+</html>
