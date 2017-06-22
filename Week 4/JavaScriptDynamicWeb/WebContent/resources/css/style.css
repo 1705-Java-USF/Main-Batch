@@ -1,0 +1,38 @@
+body {
+	padding: 25px;
+	background: linear-gradient(to bottom right, #e9ab02, #fc6758);
+}
+
+p {
+	font-size: 1.3em;
+	color: #222;
+}
+
+.form-type {
+	font-size: 1.1em;
+	font-family: "Times", serif;
+	font-weight: bold;
+}
+
+.trigger {
+	font-family: "Impact", sans-serif;
+	background-color: white;
+	color: #06e;
+	text-shadow:2px 2px #038;
+	font-size: 1.4em;
+	padding: 6px;
+	border: 3px outset #038;
+	border-radius: 8px;
+}
+
+.trigger:focus {
+	outline: none;
+}
+
+.fizzbuzz {
+	font-size: 1.4em;
+	font-family: "Comic Sans MS", sans-serif;
+	color: #4e320b;
+	font-weight: bold;
+	text-shadow:2px 2px #fbe496;
+}
