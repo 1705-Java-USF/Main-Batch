@@ -1,7 +1,6 @@
 package com.revature.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -9,10 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class HelloWorld extends HttpServlet {
+/**
+ * Servlet implementation class SecondHelloWorld
+ */
+public class SecondHelloWorld extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	public void init() throws ServletException {
 		System.out.println(this.getServletConfig().getServletName() + ":I am not alive yet! Web container has called me!");
@@ -34,28 +34,21 @@ public class HelloWorld extends HttpServlet {
 		}
 		
 	}
-
-
-	public void destroy() {
-		System.out.println("Web container considers dormant, shutting me down.");
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("I am now executing actions.");
-		
-		response.setContentType("text/html");
-		//Grab the writer of the response to utilize it to send back a dynamic webpage
-		PrintWriter out = response.getWriter();
-		
-		out.println("Hello world!");
-		
-		
-		out.println(
-				"<hr>" +
-				"<a href='index.html'>BACK</a>"
-				);
-		
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
