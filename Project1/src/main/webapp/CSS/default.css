@@ -1,0 +1,21 @@
+body {
+	background-color: #000000;
+	color: #000000;
+}
+
+.centered {
+	width: 800px;
+    height: 100px;
+    
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+input { 
+    lign: right; 
+}
