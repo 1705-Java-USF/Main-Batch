@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Account</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<link rel="stylesheet" type="text/css" href="resources/css/default.css">
+    
+</head>
+<body class="container row">
+    <div class="window" id="login">
+        <div class="window_header col-md-12">
+            Create Account
+        </div>
+        <br>
+        <br>
+        <br>
+        <form method="post" action="userCreateAccount.do">
+                <input type="text" name="firstname" placeholder="First Name">
+                <input type="text" name="lastname" placeholder="Last Name"><br><br>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required><br><br>
+                <input type="email" name="email" placeholder="Email" required><br><br>
+                <input type="submit" value="Submit">
+        </form>
+        <br>
+    </div>
+</body>
+</html>
