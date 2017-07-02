@@ -42,12 +42,12 @@
 	<c:out value="${requestScope.test}"></c:out>
 	<c:out value="${sessionScope.test}"></c:out>
 	<c:out value="${applicationScope.test}"></c:out>
-	
+
 	<h2>FOR LOOPS</h2>
 	<c:forEach var="j" begin="1" end="5">
 		<h4><c:out value="${j}"></c:out> </h4>
 	</c:forEach>
-	
+
 	<h2>EXCEPTION HANDLING</h2>
 	<c:catch var="caughtException">
 		<% int i = 1/0; %>
@@ -56,13 +56,13 @@
 		Exception: ${caughtException}<br>
 		Info:		${caughtException.message}
 	</c:if>
-	
+
 	<h2>FUNCTIONS</h2>
 	<c:set var="str" value="This is a string!"></c:set>
 	<c:if test="${fn:contains(str, 'string')}">
 		<c:out value="SUCCESS"></c:out>
 	</c:if>
-		<!-- 
+		<!--
 			other functions:
 			-contains()
 			-containsIgnoreCase()
@@ -77,37 +77,37 @@
 			-length()
 			-replace()
 		 -->
-		 
+
 	<h2>FORMATTING</h2>
-		<c:set var="Date" value="<%=new java.util.Date()%>" />  
-		<p>  
-		Formatted Time :  
-		<fmt:formatDate type="time" value="${Date}" />  
-		</p>  
-		<p>  
-		Formatted Date :  
-		<fmt:formatDate type="date" value="${Date}" />  
-		</p>  
-		<p>  
-		Formatted Date and Time :  
-		<fmt:formatDate type="both" value="${Date}" />  
-		</p>  
-		<p>  
-		Formatted Date and Time in short style :  
-		<fmt:formatDate type="both" dateStyle="short" timeStyle="short"  
-		value="${Date}" />  
-		</p>  
-		<p>  
-		Formatted Date and Time in medium style :  
-		<fmt:formatDate type="both" dateStyle="medium" timeStyle="medium"  
-		value="${Date}" />  
-		</p>  
-		<p>  
-		Formatted Date and Time in long style :  
-		<fmt:formatDate type="both" dateStyle="long" timeStyle="long"  
-		value="${Date}" />  
-		</p> 		
-	 	<!-- 
+		<c:set var="Date" value='<%=new java.util.Date()%>'></c:set>
+		<p>
+		Formatted Time :
+		<fmt:formatDate type="time" value="${Date}"></fmt:formatDate>  
+		</p>
+		<p>
+		Formatted Date :
+		<fmt:formatDate type="date" value="${Date}"></fmt:formatDate>
+		</p>
+		<p>
+		Formatted Date and Time :
+		<fmt:formatDate type="both" value="${Date}" />
+		</p>
+		<p>
+		Formatted Date and Time in short style :
+		<fmt:formatDate type="both" dateStyle="short" timeStyle="short"
+		value="${Date}" />
+		</p>
+		<p>
+		Formatted Date and Time in medium style :
+		<fmt:formatDate type="both" dateStyle="medium" timeStyle="medium"
+		value="${Date}" />
+		</p>
+		<p>
+		Formatted Date and Time in long style :
+		<fmt:formatDate type="both" dateStyle="long" timeStyle="long"
+		value="${Date}" />
+		</p>
+	 	<!--
 			other functions:
 			-parseNumber()
 			-timeZone()
@@ -117,17 +117,17 @@
 			-formatDate()
 		 -->
 	 	<h2>CONNECTING TO A SQL DATABASE</h2>
-	 	
-	 	<sql:setDataSource var="db" 
+
+	 	<sql:setDataSource var="db"
 	 					driver="oracle.jdbc.driver.OracleDriver"
 	 					url="jdbc:oracle:thin:@localhost:1521:xe"
 	 					user="admin"
 	 					password="admin"/>
-	 	
+
 	 	<sql:query var="query" dataSource="${db}">
 	 		SELECT * FROM FLASH_CARDS
 	 	</sql:query>
-	 	
+
 	 	<table border="2" width="100%">
 	 		<tr>
 	 			<th>fc_id</th>
