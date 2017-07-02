@@ -1,0 +1,7 @@
+#This our property file!
+url = jdbc:oracle:thin:@sandbox.c7gydzn7nvzj.us-east-1.rds.amazonaws.com:1521:orcl
+user=paul
+pass=paul1234
+
+
+#Mac use own password and username 
