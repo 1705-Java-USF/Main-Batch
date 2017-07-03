@@ -1,0 +1,45 @@
+h1
+{
+	/*background-color: #333333; /* #RRGGBB */
+	/*color: #ffffff;*/
+	font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
+
+#mainnav
+{
+	background-color: #000000;
+	color: #ffffff;
+
+}
+
+#nv
+{
+	 background-color: #01b0c8;	
+	 font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+	 
+}
+#jd
+{
+	background-color: #c4d5dd;
+	font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+	border: solid 1px black;
+}
+
+#wl
+{
+	border: solid 1px black;
+}
+
+.icon
+{
+	border-radius: 50%;
+	border: solid 1px black;
+}
+
+#tb
+{
+	background-color: #ffffff;
+	border: solid 1px black;
+	/*border: solid 1px black;*/
+}
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "Resources/CSS/default.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>Create Reimbursement</title>
+
+<script src = "Resources/js/main.js"></script>
+
+</head>
+<body class = "container-fluid">
+
+<img src="Resources/img/header.png" width = "100%">
+
+<!-- NAVIGATION BAR -->
+<nav id = "nv" class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.jsp" style = "color: #ffffff;">Home</a>
+    </div>
+    	<ul class="nav navbar-nav">
+    		<li class="active"><a href="ersuser.jsp">Morty View</a></li>
+			<li class="active"><a href="UserPending.do">Pending Reimbursements</a></li>
+			<li class="active"><a href="UserResolved.do">Resolved Reimbursements</a></li>
+			<li class="active"><a href="create.html">Create Reimbursement</a></li>
+      		<li class="active"><a href="updateUser.jsp">Update Account</a></li>
+    	</ul>
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><a href="Logout.do" style = "color: #ffffff;"><span class="glyphicon glyphicon-log-out" ></span>Logout</a></li>		
+    	</ul>
+  </div>
+</nav>
+
+<!-- CREATE REIMBURSEMENT INPUT FORM -->
+<div id = "jd" class = "jumbotron">
+	<div id = "id" class = "well">
+		<h3>Create Reimbursements Request</h3> 
+	</div>
+	<form method = "post" action="CreateRein.do">
+		<div class="form-group">
+  			<label for="sel1">Select Item:</label>
+  			<select class="form-control" id="sel1" name = "type">
+  				<option value = "0">Pickle Rick</option>
+    			<option value = "1">Portal Gun</option>
+    			<option value = "2">Plumbus</option>
+    			<option value = "3">Meeseeks Box</option>
+    			<option value = "4">Mega Seed</option>
+  			</select>
+		</div>
+		<label for="sel1">Price:</label>
+		<div class = "input-group">
+			<span class = "input-group-addon"> <i class = "glyphicon glyphicon-usd"></i> </span>
+			<input type = "number" step = ".01" name = "ammount" class = "form-control" value = "0.00" required>
+		</div>
+		<br>
+		
+		<label for="sel1">Description:</label>
+		<div class = "input-group">
+			<span class = "input-group-addon"> <i class = "glyphicon glyphicon-book"></i> </span>
+			<input type = "text" name = "desc" class = "form-control" value ="Description" required>
+		</div>
+		<br>
+		
+		<label for="sel1">Receipt:</label>
+		<br>
+		<label class="btn btn-default btn-file"><input type="file" name = "receipt" style="display: file;"></label>
+		<br>
+		<br>
+		
+		<div>
+			<input type = "submit" class="btn btn-default" value = "Create" aria-label="Left Align">
+		</div>
+	</form>
+	
+	
+	
+</div>
+</body>
+</html>

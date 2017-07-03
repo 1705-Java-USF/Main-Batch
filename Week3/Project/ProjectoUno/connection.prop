@@ -1,0 +1,6 @@
+#This is out property file
+
+url =jdbc:oracle:thin:@sandbox.c7gydzn7nvzj.us-east-1.rds.amazonaws.com:1521:orcl
+
+user = chinook
+pass = p4ssw0rd
