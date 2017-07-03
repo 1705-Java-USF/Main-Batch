@@ -171,7 +171,7 @@ public class FrontController extends HttpServlet {
 
 			// Write image data to Response.
 			response.getOutputStream().write(retrievedimg);
-
+			break;
 			// Counter-Terrorist
 		case "gunrequest":
 			session = request.getSession();

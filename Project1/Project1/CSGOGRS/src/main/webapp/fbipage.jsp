@@ -34,7 +34,13 @@
 								<td><c:out value="${ sessionScope.pendingreqs[j][2] }"></c:out></td>
 								<td><c:out value="${ sessionScope.pendingreqs[j][3] }"></c:out></td>
 								<td><c:out value="${ sessionScope.pendingreqs[j][4] }"></c:out></td>
-								<td><a href="#"><button>View</button></a></td>
+								<td>
+									<form method="post" action="viewpic.do" target="_blank">
+										<input type="hidden" name="thegid"
+											value="${ sessionScope.pendingreqs[j][7] }"> <input
+											type="submit" value="View">
+									</form>
+								</td>
 								<td>
 									<form method="post" action="approve.do">
 										<input type="hidden" name="thej" value="${ j }"> <input
@@ -88,7 +94,13 @@
 								<td><c:out value="${ sessionScope.pendingreqs[j][5] }"></c:out></td>
 								<td><c:out value="${ sessionScope.pendingreqs[j][8] }"></c:out></td>
 
-								<td><a href="viewsingle.do"><button>View</button></a></td>
+								<td>
+									<form method="post" action="viewpic.do" target="_blank">
+										<input type="hidden" name="thegid"
+											value="${ sessionScope.pendingreqs[j][7] }"> <input
+											type="submit" value="View">
+									</form>
+								</td>
 								<td><c:out value="${ sessionScope.pendingreqs[j][6] }"></c:out></td>
 							</tr>
 						</c:if>
@@ -98,9 +110,9 @@
 		</div>
 	</c:when>
 	<c:when test="${ sessionScope.page == 'viewcts' }">
-		
-		
-			
+
+
+
 		<c:if test="${ sessionScope.viewSingle == null }">
 			<div class="well">
 				<h1 class="darkfont">VIEWING ALL CTS</h1>
@@ -153,7 +165,7 @@
 				</table>
 			</div>
 		</c:if>
-		
+
 		<c:if test="${ sessionScope.viewSingle != null }">
 			<div class="well">
 				<h1 class="darkfont">
@@ -189,7 +201,13 @@
 									<td><c:out value="${ sessionScope.pendingreqs[j][5] }"></c:out></td>
 									<td><c:out value="${ sessionScope.pendingreqs[j][8] }"></c:out></td>
 
-									<td><a href="viewsingle.do"><button>View</button></a></td>
+									<td>
+										<form method="post" action="viewpic.do" target="_blank">
+											<input type="hidden" name="thegid"
+												value="${ sessionScope.pendingreqs[j][7] }"> <input
+												type="submit" value="View">
+										</form>
+									</td>
 									<td><c:out value="${ sessionScope.pendingreqs[j][6] }"></c:out></td>
 								</tr>
 							</c:if>
@@ -198,7 +216,7 @@
 				</table>
 			</div>
 		</c:if>
-		
+
 	</c:when>
 
 	<c:otherwise>

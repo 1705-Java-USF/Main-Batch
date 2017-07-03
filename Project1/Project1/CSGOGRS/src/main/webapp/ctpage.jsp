@@ -140,8 +140,8 @@
 
 	<c:otherwise>
 
-		<div class=well>
-			<h1 class="darkfont">THE CT PAGE</h1>
+		<div class="well">
+			<h1 class="darkfont">THE COUNTER-TERRORIST PAGE</h1>
 		</div>
 
 		<form method="post" action="gunrequest.do">

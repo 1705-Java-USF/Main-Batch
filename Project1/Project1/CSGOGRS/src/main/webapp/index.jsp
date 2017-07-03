@@ -63,7 +63,7 @@
 				<!-- CSGO MUSIC START-->
 				<audio
 					src="https://s3-us-west-2.amazonaws.com/nickdesign/CSGO+Menu.mp3"
-					autoplay></audio>
+					loop autoplay></audio>
 				<!-- CSGO MUSIC END -->
 
 				<div class="fullscreen-bg">
@@ -77,7 +77,7 @@
 				<div class="row">
 					<!-- csgobox start -->
 					<div class="col-md-4"></div>
-					<div class="col-md-4 csgobox">
+					<div class="col-md-4">
 
 						<!-- csgobox start -->
 						<div class="csgobox column shadow-alt">
@@ -85,7 +85,6 @@
 						</div>
 						<!-- csgobox end -->
 
-						<div class="darkfont csgobox__header shadow">Login</div>
 						<!-- content start -->
 						<div class="csgobox shadow-alt">
 							<c:if test="${ issue != null }">
@@ -121,25 +120,23 @@
 				<!-- csgobox end -->
 			</c:when>
 			<c:when test="${ sessionScope.role == 'FBI Manager' }">
-				<div class="well">
-					<h1 class="darkfont">
+				<div class="csgobox__inside">
+					<div class="csgobox__header shadow">
 						Welcome
 						<c:out value="${ sessionScope.fname }"></c:out>
-						<c:out value="${ sessionScope.lname }"></c:out>
-						!
-						<jsp:include page="fbipage.jsp"></jsp:include>
-					</h1>
+						<c:out value="${ sessionScope.lname }"></c:out>!
+					</div>
+					<jsp:include page="fbipage.jsp"></jsp:include>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="well">
-					<h1 class="darkfont">
+				<div class="csgobox__inside">
+					<div class="csgobox__header shadow">
 						Welcome
 						<c:out value="${ sessionScope.fname }"></c:out>
-						<c:out value="${ sessionScope.lname }"></c:out>
-						!
-						<jsp:include page="ctpage.jsp"></jsp:include>
-					</h1>
+						<c:out value="${ sessionScope.lname }"></c:out>!
+					</div>
+					<jsp:include page="ctpage.jsp"></jsp:include>
 				</div>
 			</c:otherwise>
 		</c:choose>

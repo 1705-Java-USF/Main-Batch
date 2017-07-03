@@ -122,6 +122,17 @@ nav
 
 .csgobox{
   background-color: #303942;
+  padding: 4px;
+}
+
+.csgobox__inside{
+  background-color: slategrey;
+  padding: 4px;
+}
+
+.csgobox__inside .well{
+	background-color: transparent;
+	border: none;
 }
 
 .csgobox__header {
