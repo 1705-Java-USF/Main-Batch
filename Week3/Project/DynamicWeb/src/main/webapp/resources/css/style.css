@@ -1,0 +1,269 @@
+/* CSS Stylesheet for Initech */
+
+/*
+	TABLE OF CONTENTS
+	1.0  STYLING FOR THE PAGE CONTAINER
+	2.0  HEADING
+	3.0  BODY CONTAINERS
+	4.0  BUTTONS
+	5.0  ALERTS
+*/
+
+/********************************************/
+/**** 1.0 STYLING FOR THE PAGE CONTAINER ****/
+/********************************************/
+body {
+	min-height: 100%;
+	height: 100%;
+}
+
+html {
+	min-height: 100%;
+	height: 100%;
+}
+
+/*********************/
+/**** 2.0 HEADING ****/
+/*********************/
+.header {		/* Header of the page of each lesson */
+	width: 100%;
+	height: 50px;
+	padding: 5px;
+	background-color: #333;
+}
+
+.header_container {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header_logo {
+	float: left;
+}
+
+.header_title {
+	font-size: 30px;
+	color: white;
+	font-family: "Impact Regular", sans-serif;
+	padding-left: 10px;
+	padding-right: 12px;
+	float: left;
+}
+
+.header_menuitem {
+	font-size: 16px;
+	color: #53b4a0;
+	font-family: "Arial";
+	font-weight: bold;
+	padding-left: 15px;
+	padding-top: 10px;
+	float: left;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.header_menuitem a {
+	color: #53b4a0;
+	text-decoration: none;
+}
+
+.header_menuitem a:hover {
+	color: #cceeff;
+	text-decoration: none;
+}
+
+.small-header {		/* Header for mobile devices */
+	width: 100%;
+	height: 30px;
+	background-color: #333;
+}
+
+/*****************************/
+/**** 3.0 BODY CONTAINERS ****/
+/*****************************/
+/* Set style for left box */
+.leftbox-login {
+	background-color: #dce5e2;
+	height: 100%;
+}
+
+.imglogo-login {
+	width: 250px;
+	display: block;
+    margin: auto;
+	padding: 25px 0;
+}
+
+.slogan {
+	text-align: center;
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+/* Set style for right box */
+.rightbox-login {
+	background-color: #53b4a0;
+	height: 100%;
+}
+
+.outerbox {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middlebox {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.innerbox {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+.innerbox-wide {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+.innerbox-wide2 {
+    display: block;
+    margin: auto;
+    width: 90%;
+}
+
+.innerbox p {
+	text-align: center;
+	margin: 4px 0;
+}
+
+.innerbox-wide p,
+.innerbox-wide2 p {
+	text-align: center;
+	margin: 4px 0;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.innerbox-add {
+	display: block;
+    margin: auto;
+    width: 60%;
+}
+
+.innerbox-add p {
+	text-align: left;
+	margin: 4px 0;
+}
+
+.forgot {
+	text-style: italic;
+	font-size: 1.3em;
+	font-style: italic;
+}
+
+.forgot a {
+	color: #106;
+}
+
+.tps {
+	height: 100%;
+	display: block;
+    margin: auto;
+}
+
+.emp-screen {
+	font-size: 1.2em;
+	color: #333;
+}
+
+form {
+	margin-bottom: 0.5em;
+}
+
+table {
+	font-size: 1.1em;
+	border: 2px solid #333;
+}
+
+table tr {
+	background-color: #bae1d9;
+}
+
+table th, td {
+	padding: 2px 4px;
+}
+
+/*********************/
+/**** 4.0 BUTTONS ****/
+/*********************/
+.action-button {
+	border: 3px outset #777;
+	border-radius: 4px;
+	background-color: #dce5e2;
+	font-family: "Arial", sans-serif;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #333;
+	padding: 0 20px;
+}
+
+.action-button:hover {
+	background-color: #ecf5f2;
+}
+
+.action-button:active {
+	background-color: #bcc5c2;
+	border: 3px inset #444;
+}
+
+.innerbox-wide form,
+.innerbox-wide2 form {
+	margin-bottom: 1px;
+	display: inline;
+}
+
+.innerbox-wide form input {
+	background-color: #53b4a0;
+	color: white;
+	border: 2px outset #53b4a0;
+}
+
+.fa-green-button {
+	font-family:"FontAwesome";
+	background-color: green;
+	color: white;
+	border: 2px outset green;
+	border-radius: 6px;
+	padding: 0 2px;
+	margin: 0 1px;
+}
+
+.fa-red-button {
+	font-family:"FontAwesome";
+	background-color: red;
+	color: white;
+	border: 2px outset red;
+	border-radius: 6px;
+	padding: 0 2px;
+	margin: 0 1px;
+}
+
+/********************/
+/**** 5.0 ALERTS ****/
+/********************/
+.login-issue {
+	color: #800;
+	font-size: 1.3em;
+	font-style: italic;
+	font-weight: bold;
+	text-shadow: 2px 2px #faa;
+}
