@@ -1,0 +1,41 @@
+.darkfont {
+	color: #000000;
+}
+
+.center-on-screen {
+    position: absolute;
+/*     margin-left: auto;
+    margin-right: auto; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-xl {
+    padding: 10px 92px;
+    font-size: 20px;
+    border-radius: 20px;
+    width:100%;
+}
+
+body {
+    background-image: url("img/background.png");
+    background-position: fixed;
+}
+
+.portal-background {
+    background-image: url("img/portal.png");
+}
+
+.btn-space {
+	margin-right: 5px;
+}
+
+/* .vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
