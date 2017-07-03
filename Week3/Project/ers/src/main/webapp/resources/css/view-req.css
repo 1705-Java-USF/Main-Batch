@@ -1,0 +1,7 @@
+@CHARSET "ISO-8859-1";
+span.label{
+	display:inline-block;
+	font-size:100%;
+	padding-bottom:10px;
+	color: initial;
+}
