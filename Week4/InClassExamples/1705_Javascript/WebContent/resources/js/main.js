@@ -1,7 +1,27 @@
 window.onload = function(){
 	document.getElementById("para2").innerHTML = "ALTERED VIA EXTERNAL SCRIPT!";
+
+	d1 = document.getElementById("d1");
+	d2 = document.getElementById("d2");
+	d3 = document.getElementById("d3");
+	d1.addEventListener("click", heyThere1, false);
+	d2.addEventListener("click", heyThere2, false);
+	d3.addEventListener("click", heyThere3, false);
+
 };
 var count = 0;
+function heyThere1(){
+	window.alert("d1");
+}
+function heyThere2(event){
+	window.alert("d2");
+	event.stopPropagation();
+}
+function heyThere3(){
+	window.alert("d3");
+}
+
+
 function logit(){
 	var localVariable = "Heya";
 	count++;
