@@ -1,0 +1,36 @@
+<h1>SUBMIT REIMBURSEMENTS HERE</h1>
+<hr>
+<form class="form-horizontal" id="ReimburseForm" method="post">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="amount">Amount:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="amount" id="amount" placeholder="Enter reimbursement amount" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="summary">Summary:</label>
+    <div class="col-sm-10"> 
+      <input type="text" class="form-control" name="report" id="report" 
+      placeholder="Enter a summary of what the reimbursement is for" required>
+    </div>
+  </div>
+  <div class="form-group">
+  	<label class="control-label col-sm-2" for="pic">Upload an image of your reciept here</label>
+    <div class="col-sm-10">
+  		<input type="file" name="file" id="file" accept="image/*">
+  	</div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="type">Select how you paid:</label>
+      <div class="col-sm-10">
+  		<input type="radio" name="reimbursetype" value="CASH" required>Cash<br>
+		<input type="radio" name="reimbursetype" value="CARD">Card<br>
+		<input type="radio" name="reimbursetype" value="CHECK">Check
+     </div>
+   </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-default" onclick="submitReimbursement()">Submit Reimbursement</button>
+    </div>
+  </div>
+</form>

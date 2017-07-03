@@ -1,0 +1,19 @@
+body {
+	background-color: #dbdbdb; 
+	color: #008080;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#homeP {
+	width: 60%;
+	float: left;
+}
+
+#homeIMAGE {
+	float: left;
+	width: 20%;
+}
+
+#homeDIV {
+	display: inline-block;
+}
