@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="/Project1/CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -37,39 +37,44 @@
 
 <body>
 	<div class="centered">  <!-- beginning of actual website display -->
-		<c:if test="${sessionScope.username==null}"> <%-- if the user is not logged in --%>
-			<div class="jumbotron">
-				<%-- message them to login --%>
-				<h2>PLEASE LOGIN!</h2>
-				
-				<c:if test="${issue!=null}"> <%-- if the login info is incorrect --%>
-					<div class="alert alert-danger">INVALID CREDENTIALS!!!</div>
-				</c:if>
-				
-				<%--action will be read by web container, and go to method doPost in the servlet chosen --%>
-				<form method="post">
-					<%-- input with glyphicon image for USERNAME. "user" is the id --%>
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-user"></i></span> <input type="text"
-							name="username" class="form-control" placeholder="USERNAME" required>
-					</div>
+		<c:choose>
+			<c:when test="${sessionScope.username==null}"> <%-- if the user is not logged in --%>
+				<div class="jumbotron">
+					<%-- message them to login --%>
+					<h2>PLEASE LOGIN!</h2>
 					
-					<%-- input session with glyphicon for PASSWORD. "pass" is the id --%>
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-lock"></i></span> <input type="password"
-							name="pass" class="form-control" placeholder="PASSWORD" required>
-					</div>
+					<c:if test="${issue!=null}"> <%-- if the login info is incorrect --%>
+						<div class="alert alert-danger">INVALID CREDENTIALS!!!</div>
+					</c:if>
 					
-					<%-- Submit button for login --%>
-					<div>
-						<input type="submit" value="LOGIN">
-					</div>
-					
-				</form>
-			</div>
-		</c:if>
+					<%--action will be read by web container, and go to method doPost in the servlet chosen --%>
+					<form method="post">
+						<%-- input with glyphicon image for USERNAME. "user" is the id --%>
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-user"></i></span> <input type="text"
+								name="username" class="form-control" placeholder="USERNAME" required>
+						</div>
+						
+						<%-- input session with glyphicon for PASSWORD. "pass" is the id --%>
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-lock"></i></span> <input type="password"
+								name="pass" class="form-control" placeholder="PASSWORD" required>
+						</div>
+						
+						<%-- Submit button for login --%>
+						<div>
+							<input type="submit" value="LOGIN">
+						</div>
+						
+					</form>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<jsp:forward page="/WEB-INF/index.jsp"/>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
 	

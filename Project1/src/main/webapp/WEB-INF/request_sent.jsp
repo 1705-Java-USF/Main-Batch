@@ -36,17 +36,46 @@
 </head>
 
 	<body>
-
-		<%@ include file="nav_bar.jsp" %>  <%-- Bringing in nav bar  --%>
-
-		<div class="well">  <!-- beginning of actual website display -->
-			<h2>Index</h2>		    
-			  
-			 
-				
-			
-		
-		</div>
 	
+		<%@ include file="nav_bar.jsp" %>  <%-- Bringing in nav bar  --%>
+		
+		<div class="well">
+			<div class="starter-template">
+				<div class="row">
+					<div class="col-xs-12">
+
+					    <center><h2>You have created a new reimbursement request</h2></center>
+					
+					    <center><h3>Here is the information that you entered:</h3></center>
+	
+						<div class="col-xs-12" style="text-align:center">
+							<br>
+							
+							<label>Request ID</label> <c:out value="${rebs_id}" /><br />
+							<label>Type:</label> <c:if test="${rebs_type==1}">Business Expense</c:if>
+							<c:if test="${rebs_type==2}">Travel</c:if>
+							<c:if test="${rebs_type==3}">Medical</c:if><br />
+							<label>Status:</label> <c:if test="${rebs_type==1}">Pending</c:if>
+							<c:if test="${rebs_type==2}">Approved</c:if>
+							<c:if test="${rebs_type==3}">Declined</c:if><br />
+							<label>Amount:</label> $<c:out value="${rebs_amount}" /><br />
+							<label>Description:</label> <c:out value="${rebs_description}" /><br />
+							<label>Time submitted:</label> <c:out value="${time_submitted}" /><br />
+							
+							<br>
+
+						<form method="get" class="form-horizontal" action="${pageContext.request.contextPath}/employees/">
+									<input type="submit" value="Return">
+						</form>
+
+						</div>
+
+					</div>
+				</div>
+			</div> <!-- end starter-template -->
+ 		</div> <!-- end container -->
+		
+		
+		
 	</body>
 </html>

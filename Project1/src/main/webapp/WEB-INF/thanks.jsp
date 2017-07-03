@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -48,19 +48,23 @@
 				<div class="row">
 					<div class="col-xs-12">
 
-					    <center><h3>You have entered a new employee</h3></center>
+					    <center><h2>You have entered a new employee</h2></center>
 					
-					    <center><p>Here is the information that you entered:</p></center>
-
+					    <center><h3>Here is the information that you entered:</h3></center>
+	
 						<div class="col-xs-12" style="text-align:center">
-			
+							<br>
+							
 							<label>Role type:</label> <c:if test="${newRoleId==1}">Manager</c:if>
 							<c:if test="${newRoleId==2}">Employee</c:if><br/>
 							<label>First Name:</label> <c:out value="${newFname}" /><br />
 							<label>Last Name:</label> <c:out value="${newLname}" /><br />
 							<label>Username:</label> <c:out value="${newUsername}" /><br />
 							<label>Email:</label> <c:out value="${newEmail}" /><br />
+							<label>Status:</label> <c:if test="${newStatus==1}">Active</c:if>
+							<c:if test="${newStatus==2}">Inactive</c:if><br />
 							
+							<br>
 
 						<form method="get" class="form-horizontal" action="${pageContext.request.contextPath}/employees/">
 									<input type="submit" value="Return">

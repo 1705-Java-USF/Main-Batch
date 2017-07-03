@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -44,23 +44,26 @@
 		</c:if>
 				
 		<div class="well">
+			<div class="starter-template">
+				<div class="row">
+					<div class="col-xs-7 col-xs-offset-3">
 			
-			<%-- href to "new" which is createemployee.jsp --%>
+			<%-- href to "new" which will take it to employees/new =  createemployee.jsp --%>
 			<h4><a href="new"><input class="pull-right" type="submit" 
 			 value="Create an employee"></a></h4>
 			
 			
 			<h2>All employees</h2>
 			
-			<div class="table-responsive" >
-				<table id="myTable" class="table table-striped table-condensed">
+			<div class="table-responsive" align="center" >
+				<table class="table table-striped">
 					<thead>
 						<tr>
 							<th>First Name</th>
 							<th>Last Name</th>
 							<th>Username</th>
 							<th>Email</th>
-							<th></th>
+							<th>Status</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -74,6 +77,11 @@
 							<td><c:out value="${user.user_last_name}" /></td>
 							<td><c:out value="${user.user_username}" /></td>
 							<td><c:out value="${user.user_email}" /></td>
+							<%--if stm to check if they're active or inactive --%>
+							<c:if test="${user.user_status==1}">
+							<td id="icon-green">Active</td></c:if>
+							<c:if test="${user.user_status==2}">
+							<td id="icon-red">Inactive</td></c:if>
 							
 							<td>
 								<form class="form-horizontal" action="modify">
@@ -82,16 +90,14 @@
 								</form>
 							</td>
 
-							<td>
-								<form	onsubmit="return confirm('Do you really want to delete record?');"
-										id="edit_customer_form"
-										action="customerAdmin"
+							<%-- <td>
+								<form onsubmit="return confirm('Do you really want to delete record?');"
+										action="employees"
 										method="post">
-									<input type="hidden" name="delete_customer" value="${user.user_id}" />
+									<input type="hidden" name="username" value="${user.user_username}" />
 									<input type="submit" value="Delete" />
 								</form>
-							</td>
-							
+							</td> --%>
 							
 						</tr>	
 					</c:forEach> 
@@ -101,7 +107,9 @@
 
 			</div><!-- end table-responsive -->
 		</div>
-		
+		</div>
+		</div>
+		</div>
 	
 </body>
 </html>

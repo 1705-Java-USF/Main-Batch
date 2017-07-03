@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -39,9 +39,67 @@
 	
 		<%@ include file="nav_bar.jsp" %>  <%-- Bringing in nav bar  --%>
 		
-		<div class="well">  <!-- beginning of actual website display -->
-			<h2>Reimbursements page</h2>
+		<c:if test="${sessionScope.role_id!=1 }"> <%-- User can only access this page with manager credentials --%>
+			<jsp:forward page="/WEB-INF/index.jsp"/>
+		</c:if>
 		
+		<div class="well">
+			<div class="starter-template">
+				<div class="row">
+					<div class="col-xs-7 col-xs-offset-3">
+			
+			<%-- href to "new" which will take it to employees/new =  createemployee.jsp --%>
+			<h4><a href="new"><input class="pull-right" type="submit" 
+			 value="Create a request"></a></h4>
+			
+			
+			<h2>All reimbursements</h2>
+			
+			<div class="table-responsive" align="center" >
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Reimbursement ID</th>
+							<th>Employee</th>
+							<th>Amount</th>
+							<th>Attachments</th>
+							<th>Status</th>
+							<th>Resolver</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					
+					<c:forEach var="user" items="${users}"> <%-- Getting "users" from front controller --%>
+						<tr>
+							
+							<td><c:out value="${user.user_first_name}" /></td>
+							<td><c:out value="${user.user_last_name}" /></td>
+							<td><c:out value="${user.user_username}" /></td>
+							<td><c:out value="${user.user_email}" /></td>
+							<%--if stm to check if they're active or inactive --%>
+							<c:if test="${user.user_status==1}">
+							<td id="icon-green">Active</td></c:if>
+							<c:if test="${user.user_status==2}">
+							<td id="icon-red">Inactive</td></c:if>
+							
+							<td>
+								<form class="form-horizontal" action="modify">
+									<input type="hidden" name="username" value="${user.user_username}" />
+									<input type="submit" value="Edit" />
+								</form>
+							</td>
+
+						</tr>	
+					</c:forEach> 
+					</tbody>
+
+				</table>
+
+			</div><!-- end table-responsive -->
+					</div>
+				</div>
+			</div>
 		</div>
 		
 	</body>

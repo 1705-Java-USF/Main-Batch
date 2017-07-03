@@ -9,22 +9,37 @@ public class EmployeeObject {    // EmployeeObject object
 	private String user_first_name;
 	private String user_last_name;
 	private String user_email;
+	private int user_status;
 	
 	public EmployeeObject(){
 		
 	}
 	
 	public EmployeeObject(int user_id, int user_role_id, String user_username, String user_password,
-			String user_first_name, String user_last_name, String user_email) {
+			String user_first_name, String user_last_name, String user_email, int user_status) {
 		super();
-		this.user_id = user_id;
+		this.user_id = user_id; 
 		this.user_role_id = user_role_id;
 		this.user_username = user_username;
 		this.user_password = user_password;
 		this.user_first_name = user_first_name;
 		this.user_last_name = user_last_name;
 		this.user_email = user_email;
+		this.user_status = user_status;
 	}
+	public EmployeeObject(int user_role_id, String user_username, String user_password,
+			String user_first_name, String user_last_name, String user_email, int user_status) {
+		super();
+		//this.user_id = user_id; // USER_ID IS AUTO INCREMENTING
+		this.user_role_id = user_role_id;
+		this.user_username = user_username;
+		this.user_password = user_password;
+		this.user_first_name = user_first_name;
+		this.user_last_name = user_last_name;
+		this.user_email = user_email;
+		this.user_status = user_status;
+	}
+	
 	public int getUser_role_id() {
 		return user_role_id;
 	}
@@ -66,6 +81,13 @@ public class EmployeeObject {    // EmployeeObject object
 	}
 	public void setUser_password(String user_password) {
 		this.user_password = user_password;
+	}
+	public int getUser_status() {
+		return user_status;
+	}
+
+	public void setUser_status(int user_status) {
+		this.user_status = user_status;
 	}
 
 }

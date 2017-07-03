@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -40,7 +40,21 @@
 		<%@ include file="nav_bar.jsp" %>  <%-- Bringing in nav bar  --%>
 	
 		<div class="well">  <!-- beginning of actual website display -->
-			<h2>Info page</h2>
+			<h2>My info</h2>
+			<br>
+			
+			<h3>First name: <c:out value="${fname}"></c:out></h3>
+			<h3>Last name: <c:out value="${lname}"></c:out></h3>
+			<h3>Username: <c:out value="${username}"></c:out></h3>
+			<h3>Role: <c:if test="${role_id==1}">Manager</c:if>
+				<c:if test="${role_id==2}">Employee</c:if></h3>
+			<h3>Email: <c:out value="${email}"></c:out></h3>
+			<br>
+			
+			<form class="form-horizontal" action="/Project1/employees/modify">
+				<input type="hidden" name="username" value="${username}" />
+				<input type="submit" value="Edit" />
+			</form>
 		
 		</div>
 	

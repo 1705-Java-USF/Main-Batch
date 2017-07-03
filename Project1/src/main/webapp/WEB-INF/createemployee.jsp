@@ -8,7 +8,7 @@
 <%-- importing pojo and dao packages --%>
 <%@ page import="com.revature.pojo.*, com.revature.dao.*" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <!-- Latest compiled and minified CSS -->
@@ -26,9 +26,9 @@
 <!-- This will ensure that mobile will work with site by allowing proper formatting when zooming in -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script type="text/javascript" src="JS/default.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/JS/default.js"></script>
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -44,63 +44,103 @@
 			<jsp:forward page="/WEB-INF/index.jsp"/>
 		</c:if>
 	
-	<div class="well">
+	<div class="well" style='background:white;'>
+		<div class="starter-template">
+			<div class="row">
+				<div class="col-xs-12">
+				
+				<h2 align="center">Enter the information for the new employee</h2>
+				<br>
 		<%--action will be read by web container, and go to method doPost in the servlet chosen --%>
-		<form method="post" action="thanks">
+		<form method="post" action="thanks" class="form-horizontal">
+				
+			<div class="form-group"> 
+				<%-- USER_ID IS AUTO INCREMENTING --%> 
+				<!-- <label class="col-xs-5 control-label">User id:</label>
+					<div class="col-sm-3 input-group">
+						<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span>
+						<input type="number" name="user_id" class="form-control"
+						 placeholder="user id" required>	
+					</div> -->
 			
-			<div class="input-group">
-				<span class="input-group-addon"><i
-					class="glyphicon glyphicon-user"></i></span> <input type="number"
-					name="user_id" class="form-control" placeholder="user id" required>
-			</div>
+				<label class="col-sm-5 control-label">Role id:</label>
+					<fieldset>  <%-- Has employee checked by default on radio --%>
+						  <div class="radio-class">
+				  			<input type="radio" class="radio" name="role_type" value="2" id="y" checked/>
+					    		<label for=2 class="radio-label">Employee</label>
+					    	<input type="radio" class="radio" name="role_type" value="1" id="z"/>
+				   				<label for=1 class="radio-label">Manager</label>
+						  </div>
+						</fieldset>
 			
+				<label class="col-sm-5 control-label">First Name:</label>
+						<div class="col-sm-3 input-group">
+							<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span>  
+							<input type="text" name="first_name" class="form-control"
+							placeholder="first name" required>
+						</div>
 			
-			<div class="input-group">
-				<span class="input-group-addon"><i
-					class="glyphicon glyphicon-user"></i></span> <input type="number"
-					name="user_role_id" class="form-control" placeholder="user role id" required>
-			</div>
+				<label class="col-sm-5 control-label">Last Name:</label>
+					<div class="col-sm-3 input-group">
+						<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> 
+						<input type="text" name="last_name" class="form-control" 
+						placeholder="last name" required>
+					</div>
 			
-			<div class="input-group">
-			<span class="input-group-addon"><i
-				class="glyphicon glyphicon-user"></i></span> <input type="text"
-				name="username" class="form-control" placeholder="username" required>
-			</div>
+				<label class="col-sm-5 control-label">Username:</label>
+					<div class="col-sm-3 input-group">
+							<span class="input-group-addon"><i
+							class="glyphicon glyphicon-user"></i></span> 
+							<input type="text" name="username" class="form-control" 
+							placeholder="username" required>
+					</div>
 		
-			<%-- input session with glyphicon for PASSWORD. "pass" is the id --%>
-			<div class="input-group">
-				<span class="input-group-addon"><i
-				class="glyphicon glyphicon-lock"></i></span> <input type="password"
-				name="password" class="form-control" placeholder="password" required>
-			</div>
+			<!-- input session with glyphicon for PASSWORD. "pass" is the id -->
+				<label class="col-sm-5 control-label">Password:</label>
+					<div class="col-sm-3 input-group">
+						<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span>  
+						<input type="password" name="password" class="form-control" 
+						placeholder="role id" required>
+					</div>
 			
-			<div class="input-group">
-				<span class="input-group-addon"><i
-					class="glyphicon glyphicon-user"></i></span> <input type="text"
-					name="first_name" class="form-control" placeholder="first name" required>
-			</div>
-			
-			<div class="input-group">
-				<span class="input-group-addon"><i
-					class="glyphicon glyphicon-user"></i></span> <input type="text"
-					name="last_name" class="form-control" placeholder="last name" required>
-			</div>
-			
-			<div class="input-group">
-				<span class="input-group-addon"><i
-					class="glyphicon glyphicon-user"></i></span> <input type="email"
-					name="email" class="form-control" placeholder="email" required>
-			</div>
+				<label class="col-sm-5 control-label">Email:</label>
+					<div class="col-sm-3 input-group">
+						<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span>  
+						<input type="email"
+						name="email" class="form-control" 
+						placeholder="email" required>
+					</div>
+					<br>
+				<label class="col-sm-5 control-label">Active or Inactive</label> <%-- Has toggle "checked" by default --%>
+					<div class="col-sm-3 input-group">
+						<div class="onoffswitch">
+							<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+						 	<label class="onoffswitch-label" for="myonoffswitch">
+						        <span class="onoffswitch-inner"></span>
+						        <span class="onoffswitch-switch"></span>
+						  	</label>
+						    
+						</div>
+						 <%-- <input type="number" name="user_status" class="form-control" value="${user.user_status}" required> --%>
+					</div>
 			
 			<br>
 			<%-- Submit button to create user --%>
-			<div>
+			<div style="text-align:center">
 				<input type="submit" value="CREATE">
 			</div>
 			
-			
+			</div>
 		</form>
-		
+			
+				</div>
+			</div>
+		</div>
 	</div>
 				
 		

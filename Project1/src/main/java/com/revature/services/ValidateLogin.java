@@ -16,13 +16,21 @@ public class ValidateLogin {
 		System.out.println("VL 1 -Calling DAO imp to run sql stmt w/ username: " + username);
 		person = userDao.selectEmployeeByUsername(username); 
 		
-		if (username.equals(person.getUser_username()) && pass.equals(person.getUser_password()))
+		if (person!=null)
 		{
-			return person;
+			if (username.equals(person.getUser_username()) && pass.equals(person.getUser_password()))
+			{
+				return person;
+			}
+			else {
+				System.out.println("Validate Login - Received null emp");
+				return null;
+			}
 		}
-		else {
-			System.out.println("Validate Login - Received null emp");
+		else
+		{
 			return null;
 		}
+		
 	}
 }

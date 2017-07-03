@@ -1,7 +1,14 @@
 package com.revature.servlets;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +16,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+import com.revature.dao.RebsDAO;
+import com.revature.dao.RebsDAOImpl;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOImpl;
 import com.revature.pojo.EmployeeObject;
+import com.revature.pojo.RebsObj;
 import com.revature.services.ValidateLogin;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.revature.util.ConnectionUtil;
 
 /**
  * Servlet implementation class FrontController
@@ -49,6 +58,7 @@ public class FrontController extends HttpServlet {
 			String secondUrl = matcher.group(2);  // second url thing after main route
 			
 			System.out.println("FC 2 - firstUrl: " + firstUrl);
+			System.out.println("!!!! secondUrl: " + secondUrl);
 			
 			switch(firstUrl)
 			{
@@ -89,15 +99,41 @@ public class FrontController extends HttpServlet {
 				
 			case "reimbursements":
 				
-				System.out.println("FC 3.4 - forwarding to reimbursements.jsp");
+				if (secondUrl.equals(""))
+				{	
+					System.out.println("FC 3.4 - forwarding to reimbursements.jsp");
+						
+					rd = request.getRequestDispatcher("/WEB-INF/reimbursements.jsp"); 
+					rd.forward(request, response); // forward request and response?
+				}
+				else if (secondUrl.equals("new"))
+				{
+					System.out.println("FC 3.4.5 secondUrl: " + secondUrl);
+					System.out.println("FC 3.4.5 - forwarding to new_reimbursement.jsp");
 					
-				rd = request.getRequestDispatcher("/WEB-INF/reimbursements.jsp"); 
-				rd.forward(request, response); // forward request and response?
+					rd = request.getRequestDispatcher("/WEB-INF/new_reimbursement.jsp"); 
+					rd.forward(request, response); // forward request and response?
+				}
 				break;
 				
 			case "employees":
 				
-				if (secondUrl.equals("new"))
+				if (secondUrl.equals("") || secondUrl.equals("delete"))
+				{
+				System.out.println("FC 3.5 - forwarding to employees.jsp");
+				
+				ArrayList<EmployeeObject> arr = new ArrayList<>();
+				UserDAO dao2 = new UserDAOImpl();
+				System.out.println("FC 4 - Getting array of employees, setting it to arr");
+				
+				arr = dao2.selectEmployee();
+				System.out.println("Select first user, name: " + arr.get(0).getUser_first_name());
+				request.setAttribute("users", arr);  // this is setting the array of employees, putting the attribute to users (used by employees.jsp)
+					
+				rd = request.getRequestDispatcher("/WEB-INF/employees.jsp"); 
+				rd.forward(request, response); // forward request and response?
+				}
+				else if (secondUrl.equals("new"))
 				{
 					System.out.println("FC 3.6 secondUrl: " + secondUrl);
 					System.out.println("FC 3.6 - forwarding to createemployee.jsp");
@@ -110,33 +146,18 @@ public class FrontController extends HttpServlet {
 					System.out.println("FC 3.6.5 secondUrl: " + secondUrl);
 					System.out.println("FC 3.6.5 - forwarding to modify.jsp");
 					
-					String username = request.getParameter("username");
+					String username = request.getParameter("username"); // getting user that was clicked to "edit"
 					UserDAOImpl dao = new UserDAOImpl();
 					EmployeeObject updateUser = new EmployeeObject();
 					
-					updateUser = dao.selectEmployeeByUsername(username);
+					updateUser = dao.selectEmployeeByUsername(username); // get that employee info from Bean
 					
-					System.out.println("Object username: " + updateUser.getUser_username());
+					System.out.println("FC - Object username to be edited: " + updateUser.getUser_username());
 					request.setAttribute("user", updateUser);  // this is setting the array of employees, putting the attribute to users (used by employees.jsp)
 					
 					rd = request.getRequestDispatcher("/WEB-INF/modify.jsp"); 
 					rd.forward(request, response); // forward request and response?
 				}
-				else
-				{
-				System.out.println("FC 3.5 - forwarding to employees.jsp");
-				
-				ArrayList<EmployeeObject> arr = new ArrayList<>();
-				UserDAO dao2 = new UserDAOImpl();
-				System.out.println("FC 4 - Getting array of employees, setting it to arr");
-				
-				arr = dao2.selectEmployee();
-				System.out.println("Select first user, name: " + arr.get(0).getUser_first_name());
-				request.setAttribute("users", arr);  // this is setting the array of employees, putting the attribute to users (used by employees.jsp)
-					
-				rd = request.getRequestDispatcher("/WEB-INF/employees.jsp"); // prints out the login.jsp file
-				rd.forward(request, response); // forward request and response?
-				}	
 				break;
 				
 			default:
@@ -228,18 +249,24 @@ public class FrontController extends HttpServlet {
 						//once logged in, then set the following attributes:
 						session = request.getSession(); // grabs the session from request
 						session.setAttribute("employee", emp);
+						session.setAttribute("user_id", emp.getUser_id());
 						session.setAttribute("role_id", emp.getUser_role_id());
 						session.setAttribute("username", emp.getUser_username());
 						session.setAttribute("fname", emp.getUser_first_name());
 						session.setAttribute("lname", emp.getUser_last_name());
+						session.setAttribute("email", emp.getUser_email());
+						session.setAttribute("status", emp.getUser_status());
 						
 						response.sendRedirect("/Project1/index/"); // redirecting to "index" which is look at by doGet as case "index"
 						
 					} 
 					else 
 					{
+						System.out.println("AM I IN HERE");
 						// if login isn't correct, give them an "issue" message
 						request.setAttribute("issue", "INVALID CRENDENTIALS!");
+						rd = request.getRequestDispatcher("/WEB-INF/login.jsp");  
+						rd.forward(request, response);   // forward request and response?
 					}
 						
 					break;
@@ -247,19 +274,28 @@ public class FrontController extends HttpServlet {
 				
 			case "employees":
 				
-				System.out.println("FC - creating new employee");
-				
 				if (secondUrl.equals("thanks"))  // adding new employee to DB
 				{
-					int uid = Integer.parseInt(request.getParameter("user_id")); // must case string to int
-					int uroleid = Integer.parseInt(request.getParameter("user_role_id"));  // must cast string to int
+					System.out.println("FC - secondUrl: " + secondUrl);
+					System.out.println("FC - creating new employee, redirecting to thanks.jsp");
+					
+					//int uid = Integer.parseInt(request.getParameter("user_id")); // must case string to int // USER_ID IS AUTO INCREMENTING
+					int uroleid = Integer.parseInt(request.getParameter("role_type"));  // must cast string to int
 					String uname = request.getParameter("username"); // setting name (id) "user" to username
 					String pass = request.getParameter("password"); // setting name (id) "pass" to password
 					String fname = request.getParameter("first_name");
 					String lname = request.getParameter("last_name");
 					String email = request.getParameter("email");
-														
-					EmployeeObject newEmp = new EmployeeObject(uid, uroleid, uname, pass, fname, lname, email);
+					int status = 2;  // default status will be 2 = "inactive"
+					if(request.getParameter("onoffswitch") != null) // if switch is not null (meaning its checked)
+					{
+						if(request.getParameter("onoffswitch").equals("on")) // this is double checkin it - a bit pointless
+							{
+							status = 1;  //set status to 1
+							}	
+					}
+					
+					EmployeeObject newEmp = new EmployeeObject(uroleid, uname, pass, fname, lname, email, status);
 					UserDAO dao = new UserDAOImpl();  // creating dao object
 					
 					dao.createEmployee(newEmp);  // sending newEmp object to UserDAOImpl for creating
@@ -271,25 +307,152 @@ public class FrontController extends HttpServlet {
 					session.setAttribute("newFname", newEmp.getUser_first_name());
 					session.setAttribute("newLname", newEmp.getUser_last_name());
 					session.setAttribute("newEmail", newEmp.getUser_email());
+					session.setAttribute("newStatus", newEmp.getUser_status());
 					
-					
-					
-					rd = request.getRequestDispatcher("/WEB-INF/thanks.jsp");  // requestDispatch to login.jsp
+					rd = request.getRequestDispatcher("/WEB-INF/thanks.jsp");  
 					rd.forward(request, response);   // forward request and response?
 				}
-				else if (secondUrl.equals("updated"))
+				else if (secondUrl.equals("updated") || secondUrl.equals("myinfo"))
 				{
-					rd = request.getRequestDispatcher("/WEB-INF/updated.jsp");  
+					System.out.println("FC - secondUrl: " + secondUrl);
+					System.out.println("FC - updating employee, redirecting to updated.jsp");
+					
+					int uid = Integer.parseInt(request.getParameter("user_id")); // must case string to int // also, this one is getting a hidden field from the modify.jsp
+					int uroleid = Integer.parseInt(request.getParameter("role_type"));  // must cast string to int
+					String uname = request.getParameter("username"); // setting name (id) "user" to username
+					String pass = request.getParameter("password"); // setting name (id) "pass" to password
+					String fname = request.getParameter("first_name");
+					String lname = request.getParameter("last_name");
+					String email = request.getParameter("email");
+					int status = 2;
+					if(request.getParameter("onoffswitch") != null)
+					{
+						if(request.getParameter("onoffswitch").equals("on"))
+							{
+							status = 1;
+							}	
+					}
+					
+					
+					EmployeeObject updateEmp = new EmployeeObject(uid, uroleid, uname, pass, fname, lname, email, status);
+					UserDAO dao = new UserDAOImpl();  // creating dao object
+					
+					updateEmp = dao.updateEmployee(updateEmp);  // sending newEmp object to UserDAOImpl for creating
+					
+					session = request.getSession(); // grabs the session from request
+					session.setAttribute("updEmp", updateEmp);
+					session.setAttribute("updRoleId", updateEmp.getUser_role_id());
+					session.setAttribute("updUsername", updateEmp.getUser_username());
+					session.setAttribute("updFname", updateEmp.getUser_first_name());
+					session.setAttribute("updLname", updateEmp.getUser_last_name());
+					session.setAttribute("updEmail", updateEmp.getUser_email());
+					session.setAttribute("updStatus", updateEmp.getUser_status());
+					
+					System.out.println("FC- updated user: " + session.getAttribute("updUsername"));
+					
+					if (updateEmp.getUser_username().equals(session.getAttribute("username")))
+					{
+						System.out.println("FC - user currently signed in has updated their own info");
+						session.setAttribute("employee", updateEmp);
+						session.setAttribute("role_id", updateEmp.getUser_role_id());
+						session.setAttribute("username", updateEmp.getUser_username());
+						session.setAttribute("fname", updateEmp.getUser_first_name());
+						session.setAttribute("lname", updateEmp.getUser_last_name());
+						session.setAttribute("email", updateEmp.getUser_email());
+						session.setAttribute("status", updateEmp.getUser_status());
+					}
+					
+					rd = request.getRequestDispatcher("/WEB-INF/updated.jsp"); 
+					rd.forward(request, response);   // forward request and response?
+				}
+				else if (secondUrl.equals("delete"))
+				{
+					System.out.println("FC - secondUrl: " + secondUrl);
+					System.out.println("FC - deleting employee, redirecting to employees.jsp");
+					
+					String username = request.getParameter("username");		
+					
+					UserDAO dao = new UserDAOImpl();  // creating dao object
+					EmployeeObject deleteEmp = new EmployeeObject();
+					
+					deleteEmp = dao.selectEmployeeByUsername(username); // select user by username, return it to deleteEmp
+					dao.deleteEmployeeById(deleteEmp.getUser_id());  // delete that employee (make them inactive)
+					
+					System.out.println("FC- deleted user: " + deleteEmp.getUser_first_name());
+					
+					rd = request.getRequestDispatcher("/WEB-INF/employees.jsp"); 
 					rd.forward(request, response);   // forward request and response?
 				}
 				break;
+			
+			case "reimbursements":
 				
-			default:
+				if (secondUrl.equals("request_sent"))
+				{
+					System.out.println("FC doPost- secondUrl: " + secondUrl);
+					System.out.println("FC doPost- creating new rebs request");
+								
+					// rebs_id IS AUTO INCREMENTING
+					int user_id = Integer.parseInt(request.getParameter("author_id"));  // must cast string to int
+					//int man_id
+					int rebs_type = Integer.parseInt(request.getParameter("type"));
+					int rebs_status = Integer.parseInt(request.getParameter("status"));
+					double rebs_amount = Double.parseDouble(request.getParameter("amount"));
+					String rebs_description = request.getParameter("description");
+					//Blob rebs_attachments = getBlob(request.getPart("attachments"));
+					//Timestamp time_submitted = new Timestamp(System.currentTimeMillis());
+					// Timestamp time_resolved
+					
+					RebsObj newReb = new RebsObj(user_id, rebs_type, rebs_status, rebs_amount, rebs_description);
+					RebsDAO dao4 = new RebsDAOImpl();
+					
+					dao4.createReimbursement(newReb);  // sending newEmp object to UserDAOImpl for creating
+	
+					session = request.getSession(); // grabs the session from request
+					session.setAttribute("rebs_id", newReb.getRebsId());
+					session.setAttribute("rebs_user_id", newReb.getUserId());
+					session.setAttribute("rebs_type", newReb.getRebsType());
+					session.setAttribute("rebs_status", newReb.getRebsStatus());
+					session.setAttribute("rebs_amount", newReb.getRebsAmount());
+					session.setAttribute("rebs_description", newReb.getRebsDescription());
+					session.setAttribute("time_submitted", newReb.getTimeSubmitted());
+					
+					rd = request.getRequestDispatcher("/WEB-INF/request_sent.jsp");  
+					rd.forward(request, response);   // forward request and response?
+				}
+				
+				
+			/*default:
 				response.sendError(404); // if something else is click, send to custom made error page
-			}	
+*/			}	
 			return;
 		}
 		
 	}
+	
+	public Blob getBlob(Part p) {
+			
+			try {
+				
+				Connection connection = ConnectionUtil.getConnection();
+				InputStream is = p.getInputStream();
+				ByteArrayOutputStream os = new ByteArrayOutputStream();
+				byte[] byteArray = new byte[10240];
+				
+				for(int i = 0; (i = is.read(byteArray)) > 0;) {
+					os.write(byteArray, 0, i);
+				}
+				Blob b = connection.createBlob();
+				b.setBytes(1, os.toByteArray());
+				
+				return b;
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 
 }

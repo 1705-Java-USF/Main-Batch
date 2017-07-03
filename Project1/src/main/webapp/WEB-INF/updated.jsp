@@ -27,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Select character encoding support -->
-<link rel="stylesheet" type="text/css" href="CSS/default.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/default.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -39,35 +39,46 @@
 	
 		<%@ include file="nav_bar.jsp" %>  <%-- Bringing in nav bar  --%>
 		
-		<c:if test="${sessionScope.role_id!=1 }"> <%-- User can only access this page with manager credentials --%>
+		<%-- <c:if test="${sessionScope.role_id!=1 }"> User can only access this page with manager credentials
 			<jsp:forward page="/WEB-INF/index.jsp"/>
-		</c:if>
+		</c:if> --%>
 		
 		<div class="well">
 			<div class="starter-template">
 				<div class="row">
 					<div class="col-xs-12">
 
-					   <center> <h3>You have successfully edited this user:</h3></center>
+					   <center> <h2>You have successfully edited this user.</h2></center>
 					
-					   <center> <p>Here is the information that you entered:</p></center>
+					   <center> <h3>Here is new information for this user:</h3></center>
 
 						<div class="col-xs-12" style="text-align:center">
-			
-							<label>Role type:</label> <c:if test="${newRoleId==1}">Manager</c:if>
-							<c:if test="${newRoleId==2}">Employee</c:if><br/>
-							<label>First Name:</label> <c:out value="${newFname}" /><br />
-							<label>Last Name:</label> <c:out value="${newLname}" /><br />
-							<label>Username:</label> <c:out value="${newUsername}" /><br />
-							<label>Email:</label> <c:out value="${newEmail}" /><br />
+							<br>
 							
-
-						<form method="get" class="form-horizontal" action="${pageContext.request.contextPath}/employees/">
-									<input type="submit" value="Return">
-						</form>
-
+							<label>First Name:</label> <c:out value="${updFname}" /><br />
+							<label>Last Name:</label> <c:out value="${updLname}" /><br />
+							<label>Username:</label> <c:out value="${updUsername}" /><br />
+							<label>Role type:</label> <c:if test="${updRoleId==1}">Manager</c:if>
+							<c:if test="${updRoleId==2}">Employee</c:if><br/>
+							<label>Email:</label> <c:out value="${updEmail}" /><br />
+							<label>Status:</label> <c:if test="${updStatus==1}">Active</c:if>
+							<c:if test="${updStatus==2}">Inactive</c:if><br />
+							
+							<br>
+						<c:choose>
+							<c:when test="${updUsername==username}">
+								<form method="get" class="form-horizontal" action="${pageContext.request.contextPath}/myinfo/">
+											<input type="submit" value="Return">
+								</form>
+							</c:when>
+							<c:otherwise>
+								<form method="get" class="form-horizontal" action="${pageContext.request.contextPath}/employees/">
+											<input type="submit" value="Return">
+								</form>
+							</c:otherwise>
+						</c:choose>
+							
 						</div>
-
 					</div>
 				</div>
 			</div> <!-- end starter-template -->
