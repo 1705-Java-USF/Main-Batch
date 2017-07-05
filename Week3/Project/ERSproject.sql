@@ -1,0 +1,156 @@
+-- create EMPLOYEES table
+CREATE TABLE EMPLOYEES (
+    EMPLOYEE_ID NUMBER(*,0), 
+    E_USERNAME VARCHAR2(40) UNIQUE NOT NULL,
+    E_PASSWORD VARCHAR2(40) NOT NULL,
+    FIRSTNAME VARCHAR2(30),
+    LASTNAME VARCHAR2(30),
+    EMAIL VARCHAR2(100) UNIQUE NOT NULL,
+    TITLE NUMBER(*,0) NOT NULL,
+    CONSTRAINT employee_pk PRIMARY KEY(EMPLOYEE_ID)
+);
+-- create TITLES table
+CREATE TABLE TITLES (
+    TITLE_ID NUMBER(*,0) NOT NULL,
+    TITLE VARCHAR2(40) NOT NULL,
+    CONSTRAINT title_pk PRIMARY KEY(TITLE_ID)
+);
+-- create REIMBURSEMENTS table
+CREATE TABLE REIMBURSEMENTS (
+    R_ID NUMBER(*,0),
+    AMOUNT NUMBER(22,2) NOT NULL,
+    REPORT VARCHAR2(100),
+    RECEIPT BLOB,
+    SUBMITTED TIMESTAMP NOT NULL,
+    RESOLVED TIMESTAMP,
+    AUTHOR NUMBER(*,0) NOT NULL,
+    RESOLVED_BY NUMBER(*,0),
+    STATUS NUMBER(*,0) NOT NULL,
+    R_TYPE NUMBER(*,0) NOT NULL,
+    CONSTRAINT reimbursements_pk PRIMARY KEY(R_ID)
+);
+-- create STATUS table
+CREATE TABLE STATUS (
+    STATUS_ID NUMBER(*,0),
+    STATUS VARCHAR2(30) NOT NULL,
+    CONSTRAINT status_pk PRIMARY KEY(STATUS_ID)
+);
+-- create TYPES table
+CREATE TABLE R_TYPES (
+    TYPE_ID NUMBER(*,0),
+    R_TYPE VARCHAR2(30) NOT NULL,
+    CONSTRAINT r_types_pk PRIMARY KEY(TYPE_ID)
+); 
+-- add foreign keys from EMPLOYEES to TITLES
+ALTER TABLE EMPLOYEES
+ADD CONSTRAINT employee2title_FK FOREIGN KEY (TITLE) REFERENCES TITLES(TITLE_ID);
+-- add foreign keys from REIMBURSEMENTS to EMPLOYEES 
+ALTER TABLE REIMBURSEMENTS
+ADD CONSTRAINT reimburse2employee_FK FOREIGN KEY (AUTHOR) REFERENCES EMPLOYEES(EMPLOYEE_ID); 
+ALTER TABLE REIMBURSEMENTS
+ADD CONSTRAINT reimburse2manager_FK FOREIGN KEY (RESOLVED_BY) REFERENCES EMPLOYEES(EMPLOYEE_ID);
+-- add foreign keys from REIMBURSEMENTS to R_TYPES 
+ALTER TABLE REIMBURSEMENTS
+ADD CONSTRAINT reimburse2types_FK FOREIGN KEY (R_TYPE) REFERENCES R_TYPES(TYPE_ID);
+-- add foreign keys from REIMBURSEMENTS to STATUS
+ALTER TABLE REIMBURSEMENTS
+ADD CONSTRAINT reimburse2status_FK FOREIGN KEY (STATUS) REFERENCES STATUS(STATUS_ID);
+-- set values for lookup table TITLES
+INSERT INTO TITLES VALUES(1, 'MANAGER');
+INSERT INTO TITLES VALUES(2, 'EMPLOYEE');
+-- set values for lookup table STATUS
+INSERT INTO STATUS VALUES(1, 'PENDING');
+INSERT INTO STATUS VALUES(2, 'APPROVED');
+INSERT INTO STATUS VALUES(3, 'DENIED');
+-- set values for lookup table R_TYPE
+INSERT INTO R_TYPES VALUES(1, 'CASH');
+INSERT INTO R_TYPES VALUES(2, 'CARD');
+INSERT INTO R_TYPES VALUES(3, 'CHECK');
+-- sequence for EMPLOYEE_ID
+CREATE SEQUENCE employee_seq
+  start with 4000
+  increment by 1;
+-- trigger for EMPLOYEE_ID
+CREATE OR REPLACE TRIGGER employee_id_trigger
+BEFORE INSERT ON EMPLOYEES
+FOR EACH ROW
+BEGIN
+    IF :new.EMPLOYEE_ID IS NULL THEN
+        select employee_seq.nextval into :new.EMPLOYEE_ID from dual;
+    END IF;
+END;
+-- sequence for EMPLOYEE_ID
+CREATE SEQUENCE reimburse_seq
+  start with 300
+  increment by 1;
+-- trigger for R_ID
+CREATE OR REPLACE TRIGGER r_id_trigger
+BEFORE INSERT ON REIMBURSEMENTS
+FOR EACH ROW
+BEGIN
+    IF :new.R_ID IS NULL THEN
+        select reimburse_seq.nextval into :new.R_ID from dual;
+    END IF;
+END;
+-- stored procedure for insert EMPLOYEE
+CREATE OR REPLACE PROCEDURE employee_insert_procedure(username IN VARCHAR2, pass IN VARCHAR2, f_name IN VARCHAR2,
+l_name IN VARCHAR2, email IN VARCHAR2, e_title IN VARCHAR2)
+IS
+    titleID NUMBER;
+BEGIN
+    SELECT TITLE_ID INTO titleID FROM TITLES 
+    WHERE TITLE = e_title;
+    INSERT INTO EMPLOYEES VALUES(null, username, pass, f_name, l_name, email, titleID);
+    commit;
+END;
+-- stored procedure for update EMPLOYEE 
+CREATE OR REPLACE PROCEDURE employee_update_procedure(e_id IN NUMBER, pass IN VARCHAR2, 
+f_name IN VARCHAR2, l_name IN VARCHAR2, e_email IN VARCHAR2)
+IS
+BEGIN
+    UPDATE EMPLOYEES
+        SET E_PASSWORD = pass,
+        FIRSTNAME = f_name,
+        LASTNAME = l_name,
+        EMAIL = e_email
+        WHERE EMPLOYEE_ID = e_id;
+    commit;
+END;
+-- stored proedure to promote EMPLOYEE
+CREATE OR REPLACE PROCEDURE promote_procedure(e_id IN NUMBER)
+IS
+BEGIN
+    UPDATE EMPLOYEES
+        SET TITLE = 1
+        WHERE EMPLOYEE_ID = e_id;
+    commit;
+END;
+-- stored procedure to insert REIMBURSEMENT
+CREATE OR REPLACE PROCEDURE reimburse_insert_procedure(r_amount IN NUMBER, r_report IN VARCHAR2, r_receipt IN BLOB,
+r_author IN NUMBER, r_status IN VARCHAR2, typeWord IN VARCHAR2)
+IS
+    submitted TIMESTAMP;
+    statusID NUMBER;
+    typeID NUMBER;
+BEGIN
+    SELECT CURRENT_TIMESTAMP INTO submitted FROM dual;
+    SELECT STATUS_ID INTO statusID FROM STATUS
+    WHERE STATUS = r_status;
+    SELECT TYPE_ID INTO typeID FROM R_TYPES
+    WHERE R_TYPE = typeWord;
+    INSERT INTO REIMBURSEMENTS VALUES(null, r_amount, r_report, r_receipt, submitted, null, r_author, null, statusID, typeID);
+    commit;
+END;
+-- stored procedure to resolve REIMBURSEMENTS
+CREATE OR REPLACE PROCEDURE resolve_procedure(reimburse_id IN NUMBER, r_status IN VARCHAR2, m_id IN NUMBER)
+IS
+    r_resolved TIMESTAMP
+    status_num NUMBER;
+BEGIN
+    SELECT CURRENT_TIMESTAMP INTO r_resolved FROM dual;
+    SELECT STATUS_ID INTO status_num FROM STATUS WHERE STATUS = r_status;
+    UPDATE REIMBURSEMENTS
+        SET STATUS = status_num, RESOLVED_BY = m_id, RESOLVED = r_resolved
+        WHERE R_ID = reimburse_id;
+    commit;
+END;
