@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<meta charset="ISO-8859-1">
+<title>Javascript, don'cha know.</title>
+<script src="resources/js/main.js"></script>
+<script src="resources/js/jQuery.js"></script>
+</head>
+<body>
+	<div id="everything">
+		<h1>Welcome to my Javascript examples</h1>
+		
+		<h3>Hello world with script tags.</h3>
+		<p id="para1"></p>
+		<script>
+			//The current page you are on, is always referenced via the implicitly
+			//available, document object.
+			document.getElementById("para1").innerHTML = "ALTERED VIA SCRIPT TAG!!!";
+		</script>
+		
+		<h3>Let's alter things with external scripts</h3>
+		<p id="para2"></p>
+		
+		<h3>Print to console!</h3>
+		<button onclick="logit()">PRINT TO CONSOLE</button>
+		
+		<h3>PRINT TO THE PAGE</h3>
+		<script>
+			document.write("<h1>Hi! I was written directly to the document, BEFORE it finished loading.</h1>");
+		</script>
+		<h3>Writing to a loaded document</h3>
+		<button onclick="document.write('Woops...')">WRITE</button>
+		
+		<h3>ALERT BOX</h3>
+		<button onclick="window.alert('I AM YOUR LIFE NOW!')">ALERT</button>
+		
+		<h3>DYNAMIC TABLE</h3>
+		
+		<input type="text" id="first" placeholder="FIRST NAME">
+		<input type="text" id="last" placeholder="LAST NAME">
+		<br>
+		
+		<button onclick="addName()">ADD</button>
+		
+		<br>
+		<table id="table" border="2px">
+			<tr style="background-color: #EEEEEE">
+				<th>FIRST NAME</th><th>LAST NAME</th>
+			</tr>
+		</table>
+		
+		<div id="d3" style="padding:20px;background-color:blue;">
+			<div id="d2" style="padding:20px;background-color:green;">
+				<div id="d1" style="padding:20px;background-color:red;">
+					<p>test</p>
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		<h2 id="check">CHECK ME OUT!</h2>
+		<br>
+		<button onclick="hideit()">Hide it</button>
+		<button onclick="showit()">Show it</button>
+		
+			<hr>
+		<h2>Playing with H3s</h2>
+		<br>
+		<button onclick="hideh3()">Hide it</button>
+		<button onclick="showh3()">Show it</button>
+		
+		<h2 id="hover">Hover example (Event example in general)</h2>
+		
+		<h2>Callback function example</h2>
+		<button id="cbackcall">Callback</button> 
+		
+		<br>
+	</div>
+	<button id="bye">BYE</button>
+	<button id="hi">HI</button>
+	<button id="toggle">TOGGLE</button>
+	<hr>
+	<button id="generate">GENERATE</button>
+	<div id="body">
+		<p>I WAS HERE FIRST!</p>
+	</div>
+	
+</body>
+</html>
