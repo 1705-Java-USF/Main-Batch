@@ -11,16 +11,33 @@
 		<property name="hibernate.connection.password">admin</property>
 		<property name="hibernate.connection.pool_size">10</property>
 
-		<property name="show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">create</property> <!-- Specify ddl approach -->
+		<property name="show_sql">true</property> <!-- Queries display in console that are written for you -->
+		<property name="hibernate.hbm2ddl.auto">update</property> <!-- Specify ddl approach -->
+		<!-- 
+			create: Purge database that current project uses, if it already exsits.
+			update: Simply add onto existing data
+			validate: Simply validates the DB, no changes applied
+			create-drop: Database is created, then purged upon application end.
+		 -->
 
+		<!-- Setting up a second level cache. -->
+		<!-- For configuration purposes, it requires the following 2 lines -->
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<!-- First property indicates the use of 2nd level cache -->
+		<!-- Second line dictates which cache provider to use. -->
+		<!-- Some examples of 2nd level cache providers are:
+					|read-only	|nonstructured-write|read-write	|Transactional	|
+		EHCache		|	X		|			X		|	X		|				|
+		OSCache		|   X		|			X		|	X		|				|
+		SwarmCache	|   X		|			X		|			|				|
+		JBossCache	|   X		|					|			|		X		|
+		 -->
 
+		
+		<!-- Mapping CLASSES with hibernate -->
 		<mapping class="com.example.bean.Bear" />
 		<mapping class="com.example.bean.Cave" />
 		<mapping class="com.example.bean.HoneyPot" />
-
-
 	</session-factory>
 </hibernate-configuration>

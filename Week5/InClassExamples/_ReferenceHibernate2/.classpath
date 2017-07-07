@@ -32,6 +32,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/ryanm/Documents/workspace-sts-3.8.3.RELEASE/1705_JavaBatch/Jars/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Ryan/Desktop/Downloads/ojdbc7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

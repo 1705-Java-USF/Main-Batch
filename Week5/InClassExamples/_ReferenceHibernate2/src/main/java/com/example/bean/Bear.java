@@ -21,15 +21,22 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Entity
-@Table(name = "BEAR")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
+@Entity  //Entity indicates a database entity, written above class
+@Table(name = "BEAR") //Table tag describes the table name for the class
+//Cache annotation invokes a xml file describing second level cache
+//	Tells hibernate to utilize the cache at this entity.
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "myAwesomeCache")
 public class Bear {
 
+	//@Id maps a primary key, main identifier of table
 	@Id
-	@Column(name = "BEAR_ID")
-	@SequenceGenerator(name = "BEARID_SEQ", sequenceName = "BEARID_SEQ")
+	@Column(name = "BEAR_ID") //Column name of property. If no name set, property is used for column name
+	@SequenceGenerator(name = "BEARID_SEQ", sequenceName = "BEARID_SEQ") 
+	//Produce a sequence for auto-incrementing id.
+	//If no name given, defaults to "hibernate_sequence"
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BEARID_SEQ")
+	//Auto incrementing method to be used. In this case we use SEQUENCE, which simply
+	//follows typical flow of a sequence/ (1 by 1)
 	private int bearId;
 
 	@Column(name = "BEAR_COLOR")
@@ -44,14 +51,35 @@ public class Bear {
 	@Column(name = "WEIGHT")
 	private double weight;
 
+	/*
+	 * @ManyToOne will create a relationship between two different entities/tables.
+	 * These cardinality annotations apply to has-a relationships.
+	 * Fetch type defaults to LAZY as of hibernate 3 and above.
+	 * Cascade type indicates how hibernate will maintain referential integrity.
+	 * ie. delete a record with foreign key connections deletes that record and all other 
+	 * records referencing it. (Same goes for updates)
+	 */
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "CAVE_ID")
+	/*
+	 * Use @JoinColumn with the name attribute matching the column you want as a
+	 * reference. 
+	 */
 	private Cave bearHome;
 
+	/*
+	 * Many to Manys require a join table/joint table to link the two tables together.
+	 * Ergo, the @JoinTable annotation.
+	 * 	Here, the name attribute represents the jointable we are creating/using.
+	 * 	joinColumns(note the 's') indicates the two columns that ultimately represent
+	 * 	the many to many relationship.
+	 * 		-we connect the tables using a @JoinColumn, with it's connecting inverseJoinColumns.
+	 */
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "PARENT_CUB", joinColumns = @JoinColumn(name = "PARENT_ID"), inverseJoinColumns = @JoinColumn(name = "CUB_ID"))
 	private Set<Bear> bearCubs = new HashSet<>();
 
+	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "HONEYPOT_ID")
 	private HoneyPot honeyPot;
