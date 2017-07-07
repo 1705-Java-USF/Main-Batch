@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CAVE_ID")
+@Table(name = "CAVE")
 public class Cave {
 
 	@Id
@@ -26,7 +26,11 @@ public class Cave {
 
 	@Column(name = "SQ_FOOTAGE")
 	private double sqFootage;
-
+	/*
+	 * OneToMany compliments the ManyToOne Sister class. 
+	 * Use mappedBy = "propertyName" in order to finalize mapping. 
+	 * Is another way to map between tables. 
+	 */
 	@OneToMany(mappedBy = "bearHome")
 	private List<Bear> bears;
 
