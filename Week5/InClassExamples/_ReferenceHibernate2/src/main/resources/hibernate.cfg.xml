@@ -7,16 +7,34 @@
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-		<property name="hibernate.connection.username">admin</property>
-		<property name="hibernate.connection.password">admin</property>
+		<property name="hibernate.connection.username">chinook</property>
+		<property name="hibernate.connection.password">p4ssw0rd</property>
 		<property name="hibernate.connection.pool_size">10</property>
 
-		<property name="show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">create</property> <!-- Specify ddl approach -->
-
+		<property name="show_sql">true</property> <!-- Queries display in console -->
+		<property name="hibernate.hbm2ddl.auto">update</property> <!-- Specify ddl approach -->
+		<!-- 
+			create: purge database that current project uses, if it already exists.
+			update: simply add on to existing data
+			validate: simply validates the DB, no changes applied
+			create-drop: DB is created, then purged upon application end
+		 -->
+		
+		<!-- Setting up a second level cache -->
+		<!-- For configuration purposes, it requires the following two lines -->
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<!-- First property indicates the use of 2nd level cache -->
+		<!-- Second line dictates which cache provider to use -->
+		<!-- Some examples of 2nd level cache providers are:
+					| read-only | nonstructured-write	| read-write 	| transactional
+		EHCache		|	X		|	X					|	X			|	
+		OSCache		|	X		|	X					|	X			|
+		SwarmCache	|	X		|	X					|				|
+		JBossCache	|	X		|						|				|	X	
+		 -->
 
+		<!-- Mapping CLASSES with hibernate -->
 		<mapping class="com.example.bean.Bear" />
 		<mapping class="com.example.bean.Cave" />
 		<mapping class="com.example.bean.HoneyPot" />
