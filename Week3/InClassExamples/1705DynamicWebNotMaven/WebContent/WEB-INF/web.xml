@@ -9,10 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+<<<<<<< HEAD
+  
+=======
   <context-param>
     <param-name>GlobalVar</param-name>
     <param-value>Global Bobbert</param-value>
   </context-param>
+>>>>>>> 65351da7451814382e75c5f9472b7a5d8e7c4193
   <servlet>
     <servlet-name>HelloWorld</servlet-name>
     <servlet-class>com.revature.servlets.HelloWorld</servlet-class>
@@ -26,6 +30,7 @@
     <servlet-name>HelloWorld</servlet-name>
     <url-pattern>/HeyBobbert</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>GetAndPost</display-name>

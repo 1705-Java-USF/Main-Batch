@@ -81,16 +81,63 @@ public class FlashCardDAOImpl implements FlashCardDAO{
 	}
 
 	@Override
-	public List<FlashCard> selectFlashCards() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List<FlashCard> selectFlashCards() {
+        
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        FlashCard fc = null;
+        List<FlashCard> fc1 = new ArrayList<FlashCard>();
+        
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            
+            String sql = "SELECT * FROM flash_cards";
+            
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                fc = new FlashCard();
+                fc.setId(rs.getInt(1));
+                fc.setQuestion(rs.getString(2));
+                fc.setAnswer(rs.getString(3));
+                fc1.add(fc);
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            close(ps);
+            close(rs);
+        }
+        
+        return fc1;
+    }
 
-	@Override
-	public void deleteFlashCardById(int id) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void deleteFlashCardById(int id) {
+        
+        PreparedStatement ps = null;
+        
+        try(Connection conn = ConnectionUtil.getConnection()) {
+            
+            String sql = "DELETE FROM flash_cards WHERE fc_id = ?";
+            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            int altered = ps.executeUpdate();
+            
+            System.out.println("Rows Updated: " + altered);
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            close(ps);
+        }
+       
+        
+    }
 	
 	@Override
 	public void createFlashCardSP(FlashCard fc){
