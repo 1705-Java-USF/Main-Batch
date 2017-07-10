@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="personBean" class="com.revature.bean.Person" >
+		<property name="name" value="Bobbert"/>
+		<property name="occupation" ref="occupationBean"></property>
+	</bean>
+	
+	
+	<bean id="occupationBean" class="com.revature.bean.Occupation" scope="prototype"
+				autowire-candidate="false">
+		<property name="occupation" value="Professional Bob"></property>
+		<property name="salary" value="125000"/>
+	</bean>
+
+		<!-- 
+			The 'scope' attribute.
+			In Spring, out beans can be placed in different scopes.
+			By default, the scope will be 'singleton'.
+			All possible scopes include:
+			singleton -		Bean is a singleton, same instance shared by all.
+			prototype -		Every instance is it's own, but is initially set to configured bean
+			request	  -		Bean stored in an httpRequest,	(For webapps)
+			session   -		Bean stored in an httpSession,	(For webapps)
+			session-global -Bean stored in global session, (For portlets only)
+		
+		 -->
+	<bean id="personBeanProto" class="com.revature.bean.Person" scope="prototype">
+		<property name="name" value="Bobbert"/>
+		<property name="occupation" ref="occupationBean"/>
+	</bean>
+	
+	<!-- 
+		Bean Attributes:
+		-class: Points to the class that is being mapped
+		-name: 	Unique ID for a bean.
+		-scope:	Defines what scope a bean is created in.
+		-constructor-arg:	For use in 'constructor-injection'
+		-properties:		For use in 'setter-injection'
+		-autowiring-mode:	Determines how classes are automatically mapped
+		-lazy-initialization:	A boolean for determining fetch property.
+		-initialization-method:	A custom initialization method.
+		-destruction-method:	Determine a custom destroy method.
+	 -->
+
+	<bean id="personBeanByName" class="com.revature.bean.Person" autowire="byName">
+		<property name="name" value="Auto-Bobbert"/>
+	</bean>
+	<!-- 
+		Autowiring:
+			Act of creating an association between an application component (bean) with the
+			spring container. This describes what bean wiring is. To have spring determine
+			how to map different components together for you, is autowiring.
+			
+			Autowiring can have the following types:
+			-No: autowiring not used, this is the default.
+			-byName: Map bean via the property name, matching the bean id.
+			-byType: Map bean via datatype of property, to bean representing datatype class.
+			-constructor: Exactly like byType, but uses constructor name instead.
+			-autodetect: Attempts constructor autowiring first, if fails, attempts byType.
+	 -->
+	
+	<bean id="occupation" class="com.revature.bean.Occupation" scope="prototype" 
+			autowire-candidate="true">
+		<property name="occupation" value="Auto Bob"></property>
+		<property name="salary" value="300105"/>
+	</bean>
+	
+	<!-- ByType example -->
+	<bean id="personBeanByType" class="com.revature.bean.Person" autowire="byType">
+		<property name="name" value="Bobbert-ByType"/>
+	</bean>
+	<!-- 
+		byType will look through the configuration file, and identify all beans representing
+		the datatype of the dependency at hand. If more than 1 bean is identified, it throws
+		an exception, since it can't figure out which bean definition to use.
+		So when using byType, you must either have only ONE bean definition for the datatype
+		to be used, or explicity state which can be used for autowiring, via the
+		autowire-candidate boolean property.
+	 -->
+
+</beans>
