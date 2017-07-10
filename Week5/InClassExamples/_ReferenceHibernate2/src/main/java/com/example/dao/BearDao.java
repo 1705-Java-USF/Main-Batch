@@ -35,4 +35,6 @@ public interface BearDao {
 	public void queryDemo();
 
 	public void testCache();
+
+	public void mergeAndUpdate();
 }

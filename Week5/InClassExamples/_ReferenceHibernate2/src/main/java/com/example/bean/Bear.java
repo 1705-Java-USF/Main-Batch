@@ -21,15 +21,22 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Entity
-@Table(name = "BEAR")
+@Entity // eNTITY INDICATES A DATABASE ENTITY , written above class
+@Table(name = "BEAR") /* Table tag describes the table name for the class		
+					Cache annotation invokes a xml file describing second level cache
+					- Tells hibernate to utilize the cache at this entity */
 @Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "myAwesomeCache")
 public class Bear {
 
-	@Id
-	@Column(name = "BEAR_ID")
-	@SequenceGenerator(name = "BEARID_SEQ", sequenceName = "BEARID_SEQ")
+	@Id // maps a PK, main identifier of table
+	@Column(name = "BEAR_ID") // column name of property. If no name set, propery is used for column name
+	@SequenceGenerator(name = "BEARID_SEQ", sequenceName = "BEARID_SEQ") 
+	/* ^^^ Produce for sequence for auto-incrementing id. If no name given, 
+	 * defaults to "hibernate_sequence"	*/
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BEARID_SEQ")
+	/*^^^ Auto incrementing method to be used. In this case, we use SEQUENCE, which simply
+	follows typical flow of a sequence ( by 1)*/
+	
 	private int bearId;
 
 	@Column(name = "BEAR_COLOR")
@@ -44,10 +51,31 @@ public class Bear {
 	@Column(name = "WEIGHT")
 	private double weight;
 
+	/*
+	 * @ManyToOne will create a relationship between two different entities/tables.
+	 * These cardinality annotations apply to has-a relationships
+	 * 
+	 * Fetch type defaults to LAZY as of hibernate 3 and above
+	 * Cascade type indicates how hibernate will maintain referential integrity
+	 * ie. delete a record with foregin kid connections deletes that record and all other
+	 * records referencing it. Same goes for updates
+	 */
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "CAVE_ID")
+	/*
+	 * Use @JoinColumn with the name attribute matching the column you want as a reference
+	 */
 	private Cave bearHome;
 
+	/*
+	 * ManyToMany requires a join/joint table to link the two tables together.
+	 * Ergo, the @JoinTable annotation
+	 * 
+	 * Here, the name attribute represents the jointable we are creating/using.
+	 * joinColumns (note the 's') indicated the two columns that ultimately represene
+	 * tthe many to many relantionship
+	 * 	-we connect the tables using a @JoinColumn with it's connectiong inverseJoinColumns 
+	 */
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "PARENT_CUB", joinColumns = @JoinColumn(name = "PARENT_ID"), inverseJoinColumns = @JoinColumn(name = "CUB_ID"))
 	private Set<Bear> bearCubs = new HashSet<>();

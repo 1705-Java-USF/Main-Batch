@@ -7,9 +7,11 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		BearDao bd = new BearDaoImpl();
-		bd.createBear();
+		//bd.createBear();
 		
-
+		bd.getOrLoad(50);
+		
+		bd.mergeAndUpdate();
 	}
 
 }
