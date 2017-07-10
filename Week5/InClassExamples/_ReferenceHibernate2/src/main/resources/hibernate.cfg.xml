@@ -7,16 +7,35 @@
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
-		<property name="hibernate.connection.username">admin</property>
-		<property name="hibernate.connection.password">admin</property>
+		<property name="hibernate.connection.username">Project1</property>
+		<property name="hibernate.connection.password">minimize</property>
 		<property name="hibernate.connection.pool_size">10</property>
 
-		<property name="show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">create</property> <!-- Specify ddl approach -->
-
+		<property name="show_sql">true</property> <!-- Queries display in console that are written for you -->
+		<property name="hibernate.hbm2ddl.auto">update</property> <!-- Specify ddl approach -->
+		
+		<!-- 
+			create: purge database that current project uses, if it already exist
+			update: simply add onto existing data 
+			validate: simply validates the DB, no changes applied
+			create-drop: Database is created, then purged upon application end.
+		 -->
+	
+		<!--  Setting up a second level cache. -->
+		<!--  For configuration purposes it requires the following 2 lines -->
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
-
+		<!--  first property indicates the use of 2nd level cache -->
+		<!--  second line dictates which cache provider to use.  -->
+		<!--  Some examples of 2nd level cache providers are:
+		           |read-only | nonstructured-write|read-write|Transactional
+		EHcache    |    x     |           x        |       x  |
+		OSCache    |    x     |         x          |     x    |
+		SwarmCache |    x     |       x            |          |
+		JBossCache |    x     |                    |          |     x
+		-->
+		
+		<!-- Mapping CLASSES with hibernate -->
 		<mapping class="com.example.bean.Bear" />
 		<mapping class="com.example.bean.Cave" />
 		<mapping class="com.example.bean.HoneyPot" />

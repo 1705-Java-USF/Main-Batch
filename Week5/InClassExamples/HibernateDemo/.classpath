@@ -27,7 +27,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Owner/Desktop/J2EE Tools (8-10-15)/Useful JAR files/JDBC Jars/ojdbc7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/WebLogic 12.1.3"/>
+	<classpathentry kind="lib" path="C:/Users/Jonathan/Downloads/ojdbc7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
