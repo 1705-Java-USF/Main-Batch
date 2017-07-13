@@ -37,7 +37,7 @@
 				<a class="navbar-brand" href="#">Monster Hunter World</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="indexJSTL2.jsp">BACK TO OPTIONS</a></li>
+				<li><a href="indexJSTL.jsp">BACK TO OPTIONS</a></li>
 			</ul>
 		</div>
 	</nav>

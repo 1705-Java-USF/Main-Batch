@@ -18,9 +18,8 @@ public class ErsReimburse {
 		
 	}
 	
-	public ErsReimburse(int r_ID, int u_ID_AUTHOR, int rT_TYPE) {
+	public ErsReimburse(int u_ID_AUTHOR, int rT_TYPE) {
 		super();
-		R_ID = r_ID;
 		U_ID_AUTHOR = u_ID_AUTHOR;
 		RT_TYPE = rT_TYPE;
 	}
@@ -120,17 +119,18 @@ public class ErsReimburse {
 		RS_STATUS = rS_STATUS;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Reimbursement ID: " + R_ID + " | Reimbursement Amount: " + R_AMOUNT + " | Quest Description: " + R_DESCRIPTION
+//				+ " | Proof Of Completion: " + R_RECEIPT + " | Quest Time Submitted: " + R_SUBMITTED 
+//				+ " | Hunter ID: " + U_ID_AUTHOR + " | Quest Type ID: " + RT_TYPE + " | ";
+//	}
+	
 	@Override
 	public String toString() {
-		return "Reimbursement ID: " + R_ID + " | Reimbursement Amount: " + R_AMOUNT + " | Quest Description: " + R_DESCRIPTION
-				+ " | Proof Of Completion: " + R_RECEIPT + " | Quest Time Submitted: " + R_SUBMITTED 
-				+ " | Hunter ID: " + U_ID_AUTHOR + " | Quest Type ID:" + RT_TYPE + " | ";
-	}
-
-	public String toString2() {
-		return "Reimbursement ID: " + R_ID + " | Reimbursement Amount: " + R_AMOUNT + " | Quest Description: " + R_DESCRIPTION
+		return "Quest ID: " + R_ID + " | Quest Reward Amount: " + R_AMOUNT + " | Quest Description: " + R_DESCRIPTION
 				+ " | Proof Of Completion: " + R_RECEIPT + " | Quest Time Submitted: " + R_SUBMITTED + " | Quest Time Resolved: " + R_RESOLVED
-				+ " | Hunter ID: " + U_ID_AUTHOR + " | Resolver ID: " + U_ID_RESOLVER + " | Quest Type ID:" + RT_TYPE
+				+ " | Hunter ID: " + U_ID_AUTHOR + " | Resolver ID: " + U_ID_RESOLVER + " | Quest Type ID: " + RT_TYPE
 				+ " | Quest Status: " + RS_STATUS + " | ";
 	}
 	

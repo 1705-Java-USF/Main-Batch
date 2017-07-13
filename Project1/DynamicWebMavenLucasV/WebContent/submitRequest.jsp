@@ -42,21 +42,13 @@ ul {
 				<a class="navbar-brand" href="#">Monster Hunter World</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="indexJSTL2.jsp">BACK TO OPTIONS</a></li>
+				<li><a href="indexJSTL.jsp">BACK TO OPTIONS</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<div class="well" class="darkfont">
-		<form method="post" action="Submit.do">
-			<div class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<input type="text" name="username" class="form-control" placeholder="Confirm Username" required>
-			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				<input type="text" name="R_ID" class="form-control" placeholder="Reimbursement ID" required>
-			</div>
+		<form method="post" action="Submit.do">		
 			<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 				<input type="text" name="RT_TYPE" class="form-control" placeholder="Type ID" required>

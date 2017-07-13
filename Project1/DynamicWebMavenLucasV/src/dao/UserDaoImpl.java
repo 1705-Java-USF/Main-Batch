@@ -154,7 +154,7 @@ public class UserDaoImpl implements UserDao{
         }finally{
             close(ps);
             close(rs);
-        }		
+        }
 		
 		return username;
 	}

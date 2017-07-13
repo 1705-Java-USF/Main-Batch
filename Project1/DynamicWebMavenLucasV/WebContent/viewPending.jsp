@@ -42,7 +42,7 @@ ul {
 				<a class="navbar-brand" href="#">Monster Hunter World</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="indexJSTL2.jsp">BACK TO OPTIONS</a></li>
+				<li><a href="indexJSTL.jsp">BACK TO OPTIONS</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -53,10 +53,13 @@ ul {
 			<h1 class="darkfont"><c:out value="${requests}"></c:out></h1>
 		</div>
 	</c:if>
+	
 	<c:if test="${role < 3}">
 		<div class="well" class="darkfont"> 
 			<h1 class="darkfont"><c:out value="${allrequests}"></c:out></h1>
 		</div>
 	</c:if>	
+	
+
 </body>
 </html>
