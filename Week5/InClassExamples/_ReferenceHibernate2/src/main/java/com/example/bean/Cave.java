@@ -26,7 +26,12 @@ public class Cave {
 
 	@Column(name = "SQ_FOOTAGE")
 	private double sqFootage;
-
+	
+	/*
+	 * @OneToMany compliments the ManyToOne Sister class.
+	 * Use mappedBy = "prpertyName" in order to finalize mapping.
+	 * 	Is another way to map between tables.
+	 */
 	@OneToMany(mappedBy = "bearHome")
 	private List<Bear> bears;
 
