@@ -1,0 +1,21 @@
+body{
+	background-color: #333333;
+	color: #DDDDDD;
+}
+.topheader{
+	background: #dd8000;
+}
+.contentwell{
+	background: #151515;
+	
+}
+input[type="text"],input[type="number"],button[type="button"]{
+	color: #000000;
+}
+h3, h4, h5, h6{
+	color:#dd8000;
+}
+h3{
+	color:#dd8000;
+	text-decoration: underline;
+}

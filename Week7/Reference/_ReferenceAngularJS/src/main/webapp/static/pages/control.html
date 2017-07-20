@@ -1,0 +1,29 @@
+
+			<h3>Controllers & Filters</h3>
+			<div ng-show=fnamecheck class="alert alert-danger">FIELD CANNOT BE NULL</div>
+			<label for="fname">First Name</label>
+			<input type="text" ng-model="fname" name="fname" ng-change="nullCheckFirst()"><br>
+			<div ng-show=lnamecheck class="alert alert-danger">FIELD CANNOT BE NULL</div>
+			<label for="lname">Last Name</label>
+			<input type="text" ng-model="lname" name="lname" ng-change="nullCheckLast()">
+			<br>
+			<button type="button" ng-disabled=disabled ng-click="nameTable()">Submit</button>
+			<br>
+			
+			<br>
+			
+			<!-- Filter types: use | to begin a filter
+			uppercase: make upper
+			lowercase: make lower
+			currency: add dollar signs
+			filter: custom
+			orderby: order -->
+			<input type="text" ng-model="searchBox">
+			<table border="3">
+				<thead>
+					<th ng-click="orderChoice = 'fname'">FIRST NAME</th><th ng-click="orderChoice = 'lname'">LAST NAME</th>
+				</thead>
+				<tr ng-repeat="x in names | orderBy:orderChoice | filter:searchBox"> 
+					<td>{{x.fname}}</td><td>{{x.lname}}</td>
+				</tr> 
+			</table><br>

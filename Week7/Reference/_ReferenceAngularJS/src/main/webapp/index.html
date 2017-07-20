@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--PHASE1: <html ng-app ng-init="init1 = 'Bobbert'; emps=[{name:'bobbert',age:'121'},{name:'edgar',age:'43'},{name:'delita',age:'28'}]"> -->
+<html ng-app="myApp" ng-init="init1 = 'Bobbert'; emps=[{name:'bobbert',age:'121'},{name:'edgar',age:'43'},{name:'delita',age:'28'}]; names = []">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Latest compiled JavaScript -->
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Import our angular! -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<!-- Custom css -->
+<link rel="stylesheet" type="text/css" href="static/css/defaultTemplate.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+
+<!-- PHASE2: Link angular to specific module. -->
+<script src="static/controllers/app.js"></script>
+<script src="static/controllers/mainController.js"></script>
+<script src="static/controllers/functions.js"></script>
+
+<meta charset="ISO-8859-1">
+<title>Welcome To Angular Hell</title>
+</head>
+<!-- All good angular jounreys begin with 'ng-app' directive -->
+<body> <!-- use data-ng-app if yer a sqaure! -->
+	<div class="container">
+		<div class="well topheader">
+			<h1>Welcome To Angular!</h1>
+		</div>
+		
+		<div class="well contentwell">
+
+			{{init1}} and <span ng-bind="init1"></span><br>
+		</div>
+		
+		<a class="btn btn-primary btn-md" href="#/">Home</a>
+		<a class="btn btn-primary btn-md" href="#/first">First Angular</a>
+		<a class="btn btn-primary btn-md" href="#/core">Core Directives</a>
+		<a class="btn btn-primary btn-md" href="#/control">Controllers/Filters</a>
+		<a class="btn btn-primary btn-md" href="#/event">Events/Validations</a>
+		<a class="btn btn-primary btn-md" href="#/flashcard">AJAX and REST</a>
+		
+		<div class="well contentwell" ng-view>
+			
+		</div>
+	</div>
+</body>
+</html>

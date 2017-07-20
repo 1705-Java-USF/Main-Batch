@@ -1,0 +1,33 @@
+			<h3>Core Directives</h3>
+			<h4>ng-app</h4>
+			<p>Simply serves to designate an html file (or html file part) as and angular application. Allowing for use of it's functions</p>
+			<br>
+			
+			<h4>ng-init</h4>
+			<p>Designate a default value for some model date for use at page load. In this example I have set the default model for "init1" to be ""Bobbert".</p>
+			<h5>init1 default:</h5> {{init1}}
+			<br>
+			<br>
+			
+			<h4>ng-model</h4>
+			<p>When used with user input, we can bind the input to variable names as used by angular</p>
+			<input type="number" ng-model="num1" > + <input type="number" ng-model="num2"> = {{ 0 + num1 + num2}} <br>
+			<input type="number" ng-model="num3" > - <input type="number" ng-model="num4"> = {{ 0 + (num3 - num4)}} <br>
+			<input type="number" ng-model="num5" > * <input type="number" ng-model="num6"> = {{ 0 + (num5 * num6)}} <br>
+			<input type="number" ng-model="num7" > / <input type="number" ng-model="num8"> = {{ 0 + (num7 / num8)}} <br>
+			<br>
+			
+			<h4>ng-repeat</h4>
+			<p>Acts as a for:each loop. Will repeat all elements within for each item in a collection.</p>
+			<h5>Employees</h5>
+			<table border="3">
+				<tr>
+					<th>NAME</th><th>AGE</th>
+				</tr>
+				<tr ng-repeat="x in emps"> 
+					<td>{{x.name}}</td><td>{{x.age}}</td>
+				</tr> 
+			</table><br>
+			
+			<h4>ng-bind</h4>
+			<p>Serves the same purpose as using { { varName } }, accept it lets you perform the action as an attribute in a tag.</p>

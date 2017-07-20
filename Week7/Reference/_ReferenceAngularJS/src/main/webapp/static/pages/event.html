@@ -1,0 +1,23 @@
+			<h3>Events and Validation</h3>
+			<h4>Events</h4>
+			<ul>
+				<li ng-repeat="x in events">{{x}}</li>
+			</ul>
+			<h4>Validations</h4>
+			<ul>
+				<li>$dirty - states value has changed</li>
+				<li>$pristine - states field was interacted with</li>
+				<li>$touched - if field has been blurred</li>
+				<li>$invalid - states value is invalid</li>
+				<li>$error - states exact error</li>
+			</ul>
+			<br>
+			<form name=myForm>
+				<div ng-show="myForm.fname.$touched && myForm.fname.$invalid" class="alert alert-danger">FIELD CANNOT BE NULL</div>
+				<label for="fname">First Name</label>
+				<input type="text" ng-model="fname" name="fname" required><br>
+				<div ng-show="myForm.lname.$touched && myForm.lname.$invalid" class="alert alert-danger">FIELD CANNOT BE NULL</div>
+				<label for="lname">Last Name</label>
+				<input type="text" ng-model="lname" name="lname" required>
+			</form>
+			<p>You can achieve custom messages by doing a check for specific errors: myForm.prop.$error.required/email/
