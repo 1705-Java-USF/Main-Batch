@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<!-- ng-app is a directive that declares a scope for an angular
+		application.
+		NOTE: preceding all directives with 'data-' is the full
+		way to reference, and is recognized by the browser. -->
+		
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Import our angular! -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<!-- Custom css -->
+<link rel="stylesheet" type="text/css"
+	href="static/css/defaultTemplate.css">
+	
+<!-- Include internal scripts -->
+<script src="static/js/app.js"></script>
+<script src="static/controllers/mainController.js"></script>
+
+<meta charset="UTF-8">
+<title>Angular JS!</title>
+</head>
+<body>
+	<div class="container">
+		<div class="well topheader">
+			<h1>Welcome to My Angular Example</h1>
+		</div>
+	
+	
+		<div class="well contentwell">
+			<h3>My First Angular!</h3>
+			<label for="stuff">Input stuff here</label>
+			<input type="text" name="stuff" ng-model="myStuff" placeholder="TEXT HERE">
+			<!-- Use ng-model directive to map input data to a model.
+				In the above example, we bound the input to the model "myStuff" -->
+			<hr>
+			<h4>Text: <span style="color:#dddddd">{{myStuff}}</span></h4>
+		</div>
+		
+		<div class="well contentwell" ng-init="init='Bobbert';init2=45">
+			<h3>Core Directives</h3>
+			<h4>ng-app</h4>
+			<p>Simply serves to designate an html file (or html file part) 
+			as an angular application</p>
+			<br>
+			
+			<h4>ng-init</h4>
+			<p>Designates a default value for some model data for use at page load.
+			<h5>Init default: </h5> {{init}}<br>
+			<br>
+			
+			<h3>ng-model</h3>
+			<p>When used with user input, we can bind the input to 
+			variable names as used by angular</p>
+			<input type="number" ng-model="num1"> + 
+			<input type="number" ng-model="num2"> = {{0 + (num1 + num2)}}<br>
+			
+			<input type="number" ng-model="num1"> - 
+			<input type="number" ng-model="num2"> = {{0 + (num1 - num2)}}<br>
+
+			<input type="number" ng-model="num1"> * 
+			<input type="number" ng-model="num2"> = {{0 + (num1 * num2)}}<br>
+			
+			<input type="number" ng-model="num1"> / 
+			<input type="number" ng-model="num2"> = {{0 + (num1 / num2)}}<br>
+			
+			<h3>ng-repeat</h3>
+			<p>Acts as a for:each loop. Will repeat all the 
+			elements within for each item in a collection.</p>
+			<h5>Employees</h5>
+			<table border="3" ng-init="emps=[{name:'bobbert',salary:150000},
+											{name:'ryan',salary:0},
+											{name:'edgar',salary:75000}]">
+				<tr>
+					<th>NAME</th><th>SALARY</th>
+				</tr>				
+				<tr ng-repeat="x in emps">
+					<td>{{x.name}}</td><td>{{x.salary}}</td>
+				</tr>
+			</table><br>
+			
+			<h4>ng-bind</h4>
+			<p ng-non-bindable>Serves the same purpose as using {{varName}}, except it lets your
+				perform the action with a tag, instead of directly on the page.</p>
+			{{init}} and <span ng-bind="init"></span><br>
+			
+		</div>
+		
+		<div class="well contentwell" ng-controller="nameTableController" ng-init="names=[];disabled=true">
+			<h3>Controllers & Filters</h3>
+			
+			<div ng-show="fnamecheck" class="alert alert-danger">FIELD CANNOT BE NULL</div> 
+			<label for="fname">First Name</label>
+			<input type="text" ng-model="fname" name="fname" ng-change=nullCheckFirst()><br>
+			
+			<div ng-show="lnamecheck" class="alert alert-danger">FIELD CANNOT BE NULL</div>
+			<label for="lname">Last Name</label>
+			<input type="text" ng-model="lname" name="lname" ng-change=nullCheckLast()><br>
+			
+			<button type="button" ng-click="nameTable()" ng-disabled="disabled">Submit</button>
+		
+			<!-- Filters are used to modify and parse collections based on criteria. 
+				Filters are invoked via the '|' character. And whatever folows, is the 
+				filter.-->
+		
+			<br>
+			<input type="text" ng-model="searchBox">
+			<table border="3">
+				<tr>
+					<th ng-click="order = 'fname'">First Name</th>
+					<th ng-click="order = 'lname'">Last Name</th>
+				</tr>				
+				<tr ng-repeat="x in names | orderBy:order | filter:searchBox">
+					<td>{{x.fname|uppercase}}</td><td>{{x.lname}}</td>
+				</tr>
+			</table><br>
+		</div>
+		
+		<div class="well contentwell" ng-init="events=['ng-click','ng-dbl-click','ng-mousedown','ng-mouseup','ng-mouseenter','ng-mouseleave','ng-mousemove','ng-mouseover','ng-keydown','ng-keyup','ng-keypress','ng-change']">
+			<h3>Events and Validation</h3>
+			<h4>Events</h4>
+			<ul>
+				<li ng-repeat="x in events">{{x}}</li>
+			</ul>
+			<h4>Validations</h4>
+			<ul>
+				<li>{{myForm.fname.$dirty}}:$dirty - states value has changed</li>
+				<li>{{myForm.fname.$pristine}}:$pristine - states field was interacted with</li>
+				<li>{{myForm.fname.$touched}}:$touched - if field has been blurred</li>
+				<li>{{myForm.fname.$invalid}}:$invalid - states value is invalid</li>
+				<li>{{myForm.fname.$error}}:$error - states exact error</li>
+			</ul>
+			<br>
+			<form name=myForm>
+				<div ng-show="myForm.fname.$touched && myForm.fname.$invalid" class="alert alert-danger">FIELD CANNOT BE NULL</div>
+				<label for="fname">First Name</label>
+				<input type="text" ng-model="fname" name="fname" required><br>
+				<div ng-show="myForm.lname.$touched && myForm.lname.$invalid" class="alert alert-danger">FIELD CANNOT BE NULL</div>
+				<label for="lname">Last Name</label>
+				<input type="text" ng-model="lname" name="lname" required>
+			</form>
+			<p>You can achieve custom messages by doing a check for specific errors: myForm.prop.$error.required/email/
+		</div>
+	</div>
+
+		
+		
+	</div>
+</body>
+</html>
